@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!-- 사용하는 파일의 스키마 형태(설정 등)를 지정하는 내용 -->
+ 
+ <!-- 데이터베이스 연결하는 부분 --> 
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+     	<!-- ${driver} : 또 다른 파일로부터 해당 내용을 가져와 연결하는 기법 -->
+      	<!-- ↓ 동적 드라이버 연결 -->
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="service"/>
+        <property name="password" value="12345"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- SQL문장이 정리되어 있는 파일을 mapper로 연결하는 부분 -->
+  <!-- Mapper 파일 연결 시 경로는 반드시 / 로 표현한다 -->
+  <mappers>
+    <mapper resource="com/smhrd/db/MemberMapper.xml"/>
+    <mapper resource="com/smhrd/db/MessageMapper.xml"/>
+  </mappers>
+  
+</configuration>
