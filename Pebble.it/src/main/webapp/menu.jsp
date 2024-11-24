@@ -7,6 +7,6 @@
 <title>Pebblt.it</title>
 </head>
 <body>
-	<!-- 메인, 로그인 기능 구현 -->
+
 </body>
 </html>
