@@ -25,6 +25,7 @@ public class SqlSessionManager {
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		} catch (Exception e) {
+			e.printStackTrace(); // 오류 발생 시 로그 출력
 
 		}
 
