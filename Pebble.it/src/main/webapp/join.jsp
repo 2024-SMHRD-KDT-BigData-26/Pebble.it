@@ -9,7 +9,7 @@
 <body>
 	<!-- 회원가입 기능 구현 -->
 	<h1>Pebble.it 회원가입</h1>
-	<form action="JoinService" method="post">
+	<form action="Join" method="post">
 		<label for="id">아이디:</label> <input type="text" id="id" name="id"
 			placeholder="아이디를 입력하세요" required> <br>
 		<br> <label for="pw">비밀번호:</label> <input type="password" id="pw"

@@ -3,9 +3,8 @@
 <mapper namespace="com.Pebble.it.db.MemberMapper">
 	
 	<!-- 회원가입 쿼리 -->
-	<insert id="register" parameterType="com.Pebble.it.model.MemberDTO">
-		INSERT INTO USERS (USER_ID, PASSWORD, NICKNAME, PROFILE_IMG, FAVORITE_SPORT, SPORT_LEVEL)
-        VALUES (#{id}, #{pw}, #{name}, #{profileImg}, #{favoriteSport}, #{sportLevel})
+	<insert id="join" parameterType="com.Pebble.it.model.MemberDTO">
+		INSERT INTO USERS(USER_ID, PASSWORD, NICKNAME, PROFILE_IMG, FAVORITE_SPORT, SPORT_LEVEL) VALUES(#{id}, #{pw}, #{name}, #{profileImg}, #{favoriteSport}, #{sportLevel})
 	</insert>
 
 	<!-- 로그인 쿼리 -->
