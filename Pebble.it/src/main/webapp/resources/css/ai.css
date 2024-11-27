@@ -1,0 +1,73 @@
+:root {
+    --primary-color: #de9631;
+    --hover-color: #c27f22;
+    --bg-color: #fbf5f2;
+    --border-radius: 10px;
+    --common-font: "GmarketSansMedium", sans-serif;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 공통 스타일 */
+#AItitle, #AIoutput {
+    border: 1px solid var(--primary-color);
+    background-color: var(--bg-color);
+    font-family: var(--common-font);
+    font-weight: 400;
+}
+
+#AItitle { 
+    width: 758px;
+    height: 30px;
+    border-bottom: none;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-size: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+#AIoutput {
+    width: 738px;
+    height: 524px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    font-size: 18px;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+#generateBtn {
+    font-family: var(--common-font);
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#generateBtn:hover {
+    background-color: var(--hover-color);
+}
+
+#buttonContainer {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.scroll-content {
+  max-height: 500px;
+  overflow-y: auto;
+  text-align: left;
+}
