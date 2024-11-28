@@ -37,8 +37,8 @@ a {
 
 /* 페블잇 로고 */
 #pebble_it_menu_logo {
-height: 18px;
-width: 100px;
+  height: 18px;
+  width: 100px;
 }
 
 /* 메뉴 이름 */
@@ -135,4 +135,12 @@ width: 100px;
   display: flex; /* 플렉스박스 사용 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
+}
+
+:root {
+  --primary-color: #de9631;
+  --hover-color: #c27f22;
+  --bg-color: #fbf5f2;
+  --border-radius: 10px;
+  --common-font: "GmarketSansMedium", sans-serif;
 }
