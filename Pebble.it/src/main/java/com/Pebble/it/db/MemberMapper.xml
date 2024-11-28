@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Pebble.it.db.MemberMapper">
-	
+
 	<!-- 회원가입 쿼리 -->
 	<insert id="join" parameterType="com.Pebble.it.model.MemberDTO">
-		INSERT INTO USERS(USER_ID, PASSWORD, NICKNAME, PROFILE_IMG, FAVORITE_SPORT, SPORT_LEVEL) VALUES(#{id}, #{pw}, #{name}, #{profileImg}, #{favoriteSport}, #{sportLevel})
+		INSERT INTO TB_USER (
+		USER_ID,
+		PW, NICK, PROFILE_IMG, FAVORITE_SPORT, SPORT_LEVEL, UID_LEVEL,
+		JOIN_DT
+		) VALUES (
+		#{id}, #{pw}, #{name}, #{profileImg}, #{favoriteSport},
+		#{sportLevel},
+		#{uidLevel}, SYSDATE
+		)
 	</insert>
 
 	<!-- 로그인 쿼리 -->
+	<resultMap id="MemberResultMap"
+		type="com.Pebble.it.model.MemberDTO">
+		<result property="id" column="USER_ID" />
+		<result property="pw" column="PASSWORD" />
+		<result property="name" column="NICKNAME" />
+		<result property="profileImg" column="PROFILE_IMG" />
+		<result property="favoriteSport" column="FAVORITE_SPORT" />
+		<result property="sportLevel" column="SPORT_LEVEL" />
+		<result property="joinDate" column="JOIN_DT" /> <!-- 가입 날짜 매핑 추가 -->
+	</resultMap>
+
 	<select id="login" parameterType="com.Pebble.it.model.MemberDTO"
-		resultType="com.Pebble.it.model.MemberDTO">
-		SELECT * FROM USERS WHERE USER_ID = #{id} AND PASSWORD = #{pw}
+		resultMap="MemberResultMap">
+		SELECT USER_ID, PW, NICK, PROFILE_IMG,FAVORITE_SPORT,
+		SPORT_LEVEL FROM TB_USER WHERE USER_ID = #{id} AND PW = #{pw}
 	</select>
+
+	<!-- 닉네임 중복 확인 -->
+	<select id="checkNickname" parameterType="string"
+		resultType="int">
+		SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END AS
+		DUPLICATE
+		FROM TB_USER
+		WHERE NICK = #{nickname}
+	</select>
+
+	<!-- 아이디 중복 확인 -->
+	<select id="checkDuplicateId" parameterType="string"
+		resultType="int">
+		SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END AS
+		DUPLICATE
+		FROM TB_USER
+		WHERE USER_ID = #{id}
+
+	</select>
+
+
+
 </mapper>
