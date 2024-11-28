@@ -9,13 +9,31 @@
 <body>
   <!-- 사이드바 영역, 클래스로 수정 -->
   <div class="left-sidebar">
-    <img src="resources/img/home_logo.png" alt="페블잇 로고">
+    <img src="resources/img/home_logo.png" alt="페블잇 로고" id="pebble_it_menu_logo">
+    <div id="my_info">
+      <table id="info_output">
+        <tr>
+          <td id="profile_td"><img src="resources/img/no_profile_img.png" alt="프로필 이미지" id="profile_img"></td>
+          <td>닉네임님<br>오늘도 할 수 있어요!</td>
+        </tr>
+        <tr>
+          <td colspan="2">관심운동: 수영<br>포인트: 999,999P</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="#"><div id="info_config"><img src="resources/img/info_config_img.png">&nbsp;&nbsp;내 정보 변경</div></a>
+          </td>
+        </tr>
+      </table>
+    </div>
     <nav class="sidebar-menu">
-      <ul>
-        <li><a href="#">메뉴 1</a></li>
-        <li><a href="#">메뉴 2</a></li>
-        <li><a href="#">메뉴 3</a></li>
-      </ul>
+      <a href="#"><div id="menu_name" class="menu01"><img src="resources/img/home_menu_img.png">&nbsp;&nbsp;홈</div></a>
+      <a href="#"><div id="menu_name"><img src="resources/img/calender_menu_img.png">&nbsp;&nbsp;일정</div></a>
+      <a href="#"><div id="menu_name"><img src="resources/img/todo_menu_img.png">&nbsp;&nbsp;할일</div></a>
+      <a href="#"><div id="menu_name"><img src="resources/img/diary_menu_img.png">&nbsp;&nbsp;기록</div></a>
+      <a href="#"><div id="menu_name"><img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지</div></a>
+
+      <a href="#"><div id="logout_menu"><img src="resources/img/logout_img.png">&nbsp;&nbsp;로그아웃</div></a>
     </nav>
   </div>
 </body>
