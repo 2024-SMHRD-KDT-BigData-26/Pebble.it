@@ -58,8 +58,8 @@ body {
     border-radius: 0 0 5px 5px;
 }
 
-
-.calender_title, .calender_content, .todo_title, .todo_content{
+/* 일정 관련 */
+.calender_title, .todo_title{
     width: 442px;
     background-color: white;
     padding: 10px;
@@ -67,6 +67,68 @@ body {
     margin-right: 20px;
 }
 
+.calender_content, .todo_content{
+    width: 442px;
+    background-color: white;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+#calender_content_date, #calender_content_content {
+    color: #A5B4CB;
+}
+
+#calender_content_title {
+    display: flex; /* 플렉스박스 사용 */
+    align-items: center; /* 세로 중앙 정렬 */
+    font-size: 20px;
+}
+
+#calender_clock {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.calender_content table tr {
+    line-height: 1.2; /* 행 간격 줄이기 */
+  }
+  
+.calender_content table td {
+    padding: 2px 0; /* 셀 상하 패딩 줄이기 */
+}
+
+  #calender_content_content {
+    padding-bottom: 15px /* 아래쪽 간격 늘리기 */
+}
+
+/* 할일 관련 */
+.todo_content {
+    font-size: 20px;
+}
+
+/* 체크박스 컨테이너 스타일 추가 */
+.todo_content label {
+    display: flex;
+    align-items: center;
+    margin: 2px 0;
+}
+
+[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #de9631;
+    margin-right: 8px;  /* 체크박스와 텍스트 사이 간격 */
+    flex-shrink: 0;     /* 체크박스 크기 고정 */
+}
+
+/* 체크박스 취소선 */
+.strikethrough {
+    text-decoration: line-through;
+    color: #A5B4CB;
+  }
+
+/* 추천 운동 관련 */
 .sport_recomment_title{
     display: flex; /* 플렉스박스 사용 */
     align-items: center; /* 세로 중앙 정렬 */
