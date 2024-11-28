@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pebble.it</title>
+
+    <!-- jQuery 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css" />
+    <!-- 사이드바 스타일 시트 -->
+    <link rel="stylesheet" href="resources/css/we_calender.css" />
+    <!-- 캘린더와 메인 레이아웃 관련 스타일 -->
+    <link rel="stylesheet" href="resources/css/home_content.css" />
+    <!-- 홈 컨텐츠 관련 CSS -->
+  </head>
+
+  <body>
+    <!-- 레이아웃 컨테이너 -->
+    <div class="layout">
+      <!-- 사이드바 로드 -->
+      <div class="sidebar">
+        <script>
+          $(document).ready(function () {
+            $(".sidebar").load("sidebar.html");
+          });
+        </script>
+      </div>
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="home-content">
+        <div class="container_left">
+          <div class="today">2024.11.28(목)</div>
+          <div class="today_figure_title">오늘의 달성도</div>
+          <div class="today_figure_chart"></div>
+          <div class="weekly_todo_figure_title">주간 할일 달성도</div>
+          <div class="weekly_todo_figure_chart"></div>
+        </div>
+        <div class="container_right">
+          <div class="list_set">
+          <div class="calender_list">
+            <div class="calender_title">일정</div>
+            <div class="calender_content"></div>
+          </div>
+          <div class="todo_list">
+            <div class="todo_title">할일</div>
+            <div class="todo_content"></div>
+          </div>
+          </div>
+          <div class="sport_recomment_title">
+            오늘의 운동정보
+          </div>
+          <div id="AIoutput" class="scroll-content">
+            <div class="sport_recomment_content">
+              <button id="generateBtn">운동 정보 생성하기</button>
+            </div>
+          </div>
+          <script type="module" src="resources/js/ai.js"></script>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
