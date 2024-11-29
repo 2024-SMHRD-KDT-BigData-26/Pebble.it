@@ -6,6 +6,12 @@
  
  <!-- 데이터베이스 연결하는 부분 --> 
 <configuration>
+	<settings>
+    <!-- MyBatis 로그 활성화 -->
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+  </settings>
+
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
