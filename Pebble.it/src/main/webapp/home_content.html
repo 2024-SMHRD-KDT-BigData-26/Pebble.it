@@ -27,11 +27,16 @@
     <div class="layout">
       <!-- 사이드바 로드 -->
       <div class="sidebar">
-        <script>
-          $(document).ready(function () {
-            $(".sidebar").load("sidebar.html");
-          });
-        </script>
+         <script>
+                $(document).ready(function () {
+                    $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                        if (status == "error") {
+                            // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
+                            $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                        }
+                    });
+                });
+            </script>
       </div>
 
       <!-- 메인 콘텐츠 영역 -->

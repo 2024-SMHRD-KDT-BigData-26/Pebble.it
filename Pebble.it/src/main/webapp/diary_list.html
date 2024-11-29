@@ -23,9 +23,14 @@
     <div class="layout">
         <!-- 사이드바 -->
         <div class="sidebar">
-            <script>
+              <script>
                 $(document).ready(function () {
-                    $(".sidebar").load("sidebar.html"); // 사이드바를 외부 파일에서 로드
+                    $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                        if (status == "error") {
+                            // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
+                            $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                        }
+                    });
                 });
             </script>
         </div>
