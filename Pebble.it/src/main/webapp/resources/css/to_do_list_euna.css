@@ -34,8 +34,6 @@ body {
   color: white;
   padding: 20px;
   box-sizing: border-box;
-  /*height: 100vh;  사이드바가 화면 전체 높이를 차지하도록 설정 */
-  /* flex-shrink: 0; 사이드바 크기 고정 */
 }
 
 /* 메인 콘텐츠 */
