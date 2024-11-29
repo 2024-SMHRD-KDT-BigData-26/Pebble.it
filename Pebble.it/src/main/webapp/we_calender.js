@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const eventTitle = eventTitleInput.value.trim(); // 입력한 일정 제목 가져오기
       const eventDate = eventDateInput.value; // 선택한 날짜 가져오기
       const eventMemo = eventMemoInput.value.trim(); // 입력한 메모 가져오기
+      const eventColor = eventColorSelect.value; // 선택한 색상 가져오기
   
       // 제목과 날짜가 입력되었는지 확인
       if (eventTitle && eventDate) {
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
           title: eventTitle, // 일정 제목
           start: eventDate, // 일정 날짜
           description: eventMemo, // 일정에 대한 메모
+          backgroundColor: eventColor, // 일정 색상
         });
   
         // 일정 추가 완료 메시지 표시
