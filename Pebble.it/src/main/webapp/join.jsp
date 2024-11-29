@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pebble.it 회원가입</title>
   <link rel="stylesheet" href="join.css">
-  <script defer src="formValidation.js"></script> <!-- 유효성 검사 스크립트 -->
+  <script defer src="resources/js/formValidation.js"></script> <!-- 유효성 검사 스크립트 -->
 </head>
 <body>
     <!-- 왼쪽 섹션: 이미지 배경 -->
@@ -46,7 +46,10 @@
 
             <!-- 비밀번호 입력 -->
             <div class="Join">
-                <input type="password" name="pw" id="password" placeholder="비밀번호를 입력하세요 (8~16자의 영문 대/소문자, 숫자)" required>
+                <input type="password" name="pw" id="password" 
+                placeholder="비밀번호를 입력하세요 (8~16자의 영문 대/소문자, 숫자)" required
+                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$"
+                title="비밀번호는 8~16자 사이의 영문(대/소문자)과 숫자를 포함해야 합니다." >
                 <small id="password-error" class="error-message"></small>
             </div>
 
