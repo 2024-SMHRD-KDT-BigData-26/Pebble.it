@@ -1,0 +1,41 @@
+/* 전체 레이아웃 */
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* 사이드바 */
+.sidebar {
+    width: 250px; /* 사이드바 너비 */
+    background-color: #2f3b4e;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+    margin-left: 250px; /* 사이드바 너비만큼 왼쪽 여백 */
+    padding: 50px;
+    box-sizing: border-box;
+    width: calc(100% - 250px); /* 사이드바를 제외한 나머지 공간 */
+   
+}
+
+/* Summernote 에디터 */
+#summernote {
+    height: 500px; /* 에디터 높이 */
+}
+/* 에디터 영역 고정 */
+.note-editor {
+    max-height: 500px; /* 에디터의 최대 높이 고정 */
+    height: 500px;     /* 에디터 높이 고정 */
+    overflow: hidden;  /* 스크롤 제거 */
+}
+
+.note-editable {
+    height: 400px;     /* 실제 입력 영역 고정 */
+    overflow: hidden;  /* 입력 영역에서 스크롤 제거 */
+}
