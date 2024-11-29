@@ -18,24 +18,88 @@ body {
 /* 메인 콘텐츠 */
 .main-content {
     margin-left: 250px; /* 사이드바 너비만큼 왼쪽 여백 */
-    padding: 50px;
+    padding: 20px;
     box-sizing: border-box;
     width: calc(100% - 250px); /* 사이드바를 제외한 나머지 공간 */
+    height: 100vh;
+    display: flex;
+    overflow-y: hidden;
+    display: flex; /* 중앙 정렬을 위한 플렉스 박스 */
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    justify-content: flex-start; /* 위쪽 정렬 */
    
 }
 
-/* Summernote 에디터 */
-#summernote {
-    height: 500px; /* 에디터 높이 */
-}
-/* 에디터 영역 고정 */
-.note-editor {
-    max-height: 500px; /* 에디터의 최대 높이 고정 */
-    height: 500px;     /* 에디터 높이 고정 */
-    overflow: hidden;  /* 스크롤 제거 */
+.title-input-container,
+.note-editor{
+    width: 90%;
+    margin: 0 auto;
 }
 
+.title-input-container{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.title-input {
+    width: 100%; /* 입력 필드 너비를 전체로 설정 */
+    padding: 10px; /* 내부 여백 */
+    font-size: 16px; /* 입력 필드 글자 크기 */
+    border: 1px solid #ccc; /* 테두리 색상 */
+    border-radius: 5px; /* 테두리 둥글게 */
+}
+
+
+/* Summernote 에디터 */
+#summernote {
+    width: 100px; /* 제목과 동일한 너비로 조정 */
+    height: 640px; /* 높이는 기존 값 유지 */
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden !important; /* 스크롤 제거 */
+}
+
+/* 에디터 컨테이너 */
+.note-editor {
+    height: 650px;     /* 에디터 높이 고정 */
+    overflow: hidden;  /* 스크롤 제거 */
+    border: 1px solid #ccc; /* 테두리 추가 */
+    border-radius: 5px;
+}
+
+/* 에디터 입력 영역 */
 .note-editable {
-    height: 400px;     /* 실제 입력 영역 고정 */
+    height: 100%;     /* 실제 입력 영역 고정 */
     overflow: hidden;  /* 입력 영역에서 스크롤 제거 */
+    resize: none;
+}
+/* 버튼 컨테이너 */
+.button-container {
+    margin-top: 30px; /* 에디터와 버튼 간의 간격 */
+    display: flex;
+}
+
+/* 공통 버튼 스타일 */
+.action-btn {
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    font-size: 16px; /* 버튼 글자 크기 */
+    border: none; /* 기본 테두리 제거 */
+    border-radius: 5px; /* 테두리 둥글게 */
+    cursor: pointer; /* 마우스 포인터 표시 */
+    margin-left: 10px; /* 버튼 간의 간격 */
+    
+}
+
+/* 취소 버튼 스타일 */
+.cancel-btn {
+    background-color: #f5f5f5; /* 배경색 */
+    color: #333; /* 텍스트 색상 */
+    border: 1px solid #ccc; /* 테두리 */
+}
+
+/* 등록 버튼 스타일 */
+.submit-btn {
+    background-color:#DE9631; /* 배경색 */
+    color: white; /* 텍스트 색상 */
 }

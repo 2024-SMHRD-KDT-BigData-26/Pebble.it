@@ -6,8 +6,8 @@
     <!-- Summernote CSS -->
     <link rel="stylesheet" href="resources/summernote/summernote-lite.min.css">
 
-     <!-- Custom CSS -->
-     <link rel="stylesheet" href="resources/css/editor_euna.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="resources/css/editor_euna.css">
 
     <!-- jQuery (필수) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -17,10 +17,11 @@
 
     <!-- Summernote 한국어 언어 파일 -->
     <script src="resources/summernote/summernote-ko-KR.min.js"></script>
-     
+
     <!-- Custom JS -->
     <script src="resources/js/editor_euna.js" defer></script>
 </head>
+
 <body>
     <!-- 사이드바 -->
     <div class="sidebar">
@@ -34,8 +35,21 @@
 
     <!-- 메인 콘텐츠 -->
     <div class="main-content">
+
+        <!-- 제목 입력 -->
+        <div class="title-input-container">
+        
+            <input type="text" id="editor-title" class="title-input" placeholder="제목을 입력하세요.">
+        </div>
+
         <!-- Summernote 에디터 -->
         <div id="summernote"></div>
+
+        <!-- 버튼 컨테이너 -->
+        <div class="button-container">
+            <button id="cancel-btn" class="action-btn cancel-btn">취소</button>
+            <button id="submit-btn" class="action-btn submit-btn">등록</button>
+        </div>
     </div>
 </body>
 
