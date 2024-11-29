@@ -6,6 +6,12 @@
  
  <!-- 데이터베이스 연결하는 부분 --> 
 <configuration>
+	<settings>
+    <!-- MyBatis 로그 활성화 -->
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+  </settings>
+
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -24,6 +30,7 @@
   <!-- Mapper 파일 연결 시 경로는 반드시 / 로 표현한다 -->
   <mappers>
     <mapper resource="com/Pebble/it/db/MemberMapper.xml"/>
+    <mapper resource="com/Pebble/it/db/CalendarMapper.xml"/>
   </mappers>
   
 </configuration>

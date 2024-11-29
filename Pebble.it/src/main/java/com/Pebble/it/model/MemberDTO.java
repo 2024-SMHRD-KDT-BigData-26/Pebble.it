@@ -4,17 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-//lombok 연결하기
+// Lombok 연결하기
 @Data
-@AllArgsConstructor // 전체 필드를 가지고 생성자 메소드를 생성!
-@NoArgsConstructor // 기본의 생성자 메소드를 생성!
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberDTO {
-	private String id;   // 아이디
-	private String pw;   // 비밀번호 
-	private String name; // 이름
-	private String profileImg; // PROFILE_IMG
-    private String favoriteSport; // FAVORITE_SPORT
-    private String sportLevel;    // SPORT_LEVEL
+    private String id;                // USER_ID와 매핑
+    private String pw;                // PASSWORD와 매핑
+    private String name;              // NICK (닉네임)
+    private String profileImg;        // 프로필 이지미경로
+    private String favoriteSport;     // 관심 운동 
+    private String sportLevel;        // 운동 수준
+    private String joinDate;          // 가입 날짜 
+    private String uidLevel = "USER"; // UID_LEVEL 추가 (기본값 설정)
+    
+ // id와 pw만 초기화하는 생성자 (로그인에 사용)
+    public MemberDTO(String id, String pw) {
+        this.id = id;
+        this.pw = pw;
+    }
+    
 }
+
+
