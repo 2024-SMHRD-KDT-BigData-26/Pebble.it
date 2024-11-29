@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pebble.it</title>
+
+    <!-- CSS 연결 -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css"> <!-- 사이드바 스타일 -->
+    <link rel="stylesheet" href="resources/css/record_euna.css"> <!-- 메인 콘텐츠 스타일 -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/record_euna.js"></script>
+</head>
+
+<body>
+    <!-- 사이드바 -->
+    <div class="sidebar">
+        <script>
+            $(document).ready(function () {
+                $(".sidebar").load("sidebar.html"); // 사이드바를 외부 파일에서 로드
+            });
+        </script>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="main-content">
+        <!-- content-box -->
+        <div class="content-box">
+            <!-- 1번째 줄: diary_category_label + 수정, 삭제 버튼 -->
+            <div class="content-header">
+                <table>
+                    <tr>
+                        <td><span class="diary_category_label_01_diary">나의기록</span>2024.12.31(목)</td>
+                        <td><span class="diary_category_label_02_sport">운동정보</span></td>
+                        <td><span class="diary_category_label_03_recomment">추천할일</span></td>
+                    </tr>
+                </table>
+                <div class="button-group">
+                    <button id="modify-btn" class="action-btn modify-btn">수정</button>
+                    <button id="delete-btn" class="action-btn delete-btn">삭제</button>
+                </div>
+            </div>
+
+            <!-- 제목 영역 (2번째 줄) -->
+            <div class="title">
+                오늘의 운동정보
+            </div>
+
+            <!-- 3번째 줄: 본문 내용 -->
+            <div class="content-body" aria-placeholder="여기에 내용이 들어갑니다.">
+            </div>
+
+            <!-- 4번째 줄: 목록으로 버튼 -->
+            <div class="content-footer">
+                <button id="back-btn" class="action-btn back-btn">목록으로</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!--  -->

@@ -1,0 +1,176 @@
+/* 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* 전체 요소에 폰트 적용 */
+  * {
+    font-family: 'GmarketSansMedium', sans-serif;
+  }
+
+/* 전체 레이아웃 */
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh; /* 전체 화면 높이 */
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 250px; /* 사이드바 너비 */
+  background-color: #2f3b4e;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  margin-left: 250px; /* 사이드바 너비만큼 왼쪽 여백 */
+  padding: 20px;
+  box-sizing: border-box;
+  width: calc(100% - 250px); /* 사이드바를 제외한 나머지 공간 */
+  display: flex; /* 플렉스 박스 레이아웃 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  background-color: #f8f9fa; /* 연한 배경색 */
+}
+
+/* content-box */
+.content-box {
+  width: 95%; /* 박스 너비 */
+  height: 800px;
+  background-color: white; /* 흰색 배경 */
+  border: 1px solid #ddd; /* 테두리 색상 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  padding: 20px;
+  box-sizing: border-box; /* 패딩 포함 */
+  display: flex;
+  flex-direction: column; /* 세로 방향 레이아웃 */
+  gap: 20px; /* 각 줄 간격 */
+}
+
+/* 카테고리라벨 및 버튼 */
+.content-header {
+  display: flex; /* 플렉스 레이아웃 */
+  justify-content: space-between; /* 제목과 버튼을 양 끝으로 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-bottom: -10px; /* 아래 여백 제거 */
+  padding-bottom: 0; /* 내부 여백 제거 */
+}
+
+/* 제목 스타일 */
+.title {
+  margin-top: -10px;
+  margin-bottom: -10px;
+  font-size: 24px; /* 제목 크기 */
+  font-weight: bold; /* 굵은 텍스트 */
+  color: #333; /* 제목 색상 */
+}
+
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  gap: 10px; /* 버튼 간 간격 */
+}
+
+.action-btn {
+  padding: 10px 20px; /* 버튼 크기 */
+  font-size: 14px; /* 버튼 글자 크기 */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: 5px; /* 둥근 모서리 */
+  cursor: pointer; /* 포인터 커서 */
+}
+
+/* 수정 버튼 */
+.modify-btn {
+  background-color: #DE9631; /* 주황색 배경 */
+  color: white; /* 흰색 글자 */
+}
+
+/* 삭제 버튼 */
+.delete-btn {
+  background-color: #D64949; /* 빨간색 배경 */
+  color: white; /* 흰색 글자 */
+}
+
+/* 2번째 줄: 본문 */
+.content-body {
+  flex-grow: 1; /* 가장 크게 확장 */
+  font-size: 16px; /* 본문 글자 크기 */
+  color: #333; /* 본문 글자 색상 */
+  line-height: 1.6; /* 줄 간격 */
+  overflow-y: auto; /* 내용이 많아지면 스크롤 */
+  padding: 0px; /* 내부 여백 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  border-top: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
+  border-bottom: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
+}
+
+/* 이미지 래퍼 */
+.image-wrapper {
+  margin-top: 20px; /* 글과 이미지 간격 */
+  display: flex; /* 플렉스 레이아웃 */
+  gap: 10px; /* 이미지 간 간격 */
+  justify-content: center; /* 이미지 중앙 정렬 */
+}
+
+.image-wrapper img {
+  width: 100%; /* 이미지 폭 조정 */
+  max-width: 300px; /* 최대 너비 */
+  border-radius: 5px; /* 둥근 모서리 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 3번째 줄: 목록으로 버튼 */
+.content-footer {
+  text-align: center; /* 중앙 정렬 */
+}
+
+.back-btn {
+  padding: 10px 30px; /* 버튼 크기 */
+  font-size: 16px; /* 버튼 글자 크기 */
+  background-color: #36454F; /* 회색 배경 */
+  color: white; /* 흰색 글자 */
+  border: none; /* 테두리 제거 */
+  border-radius: 5px; /* 둥근 모서리 */
+  cursor: pointer; /* 포인터 커서 */
+}
+/* 카테고리 라벨 */
+.diary_category_label_01_diary {
+  display: inline-block; /* 인라인 요소를 블록처럼 취급 */
+  background-color: #e6f3ff; /* 라벨 배경색 */
+  color: #0085FF; /* 텍스트 색상 */
+  padding: 4px 8px; /* 내부 여백 */
+  border-radius: 4px; /* 둥근 모서리 */
+  font-size: 12px; /* 텍스트 크기 */
+  margin-right: 10px; /* 날짜와 라벨 간 간격 */
+   
+}
+
+.diary_category_label_02_sport {
+  display: inline-block; /* 인라인 요소를 블록처럼 취급 */
+  background-color: #e6f3ff; /* 라벨 배경색 */
+  color: #00ba34; /* 텍스트 색상 */
+  padding: 4px 8px; /* 내부 여백 */
+  border-radius: 4px; /* 둥근 모서리 */
+  font-size: 12px; /* 텍스트 크기 */
+  margin-right: 10px; /* 날짜와 라벨 간 간격 */
+  display: none;
+}
+
+.diary_category_label_03_recomment {
+  display: inline-block; /* 인라인 요소를 블록처럼 취급 */
+  background-color: #f5edff; /* 라벨 배경색 */
+  color: #9747ff; /* 텍스트 색상 */
+  padding: 4px 8px; /* 내부 여백 */
+  border-radius: 4px; /* 둥근 모서리 */
+  font-size: 12px; /* 텍스트 크기 */
+  margin-right: 10px; /* 날짜와 라벨 간 간격 */
+  display: none;
+}
