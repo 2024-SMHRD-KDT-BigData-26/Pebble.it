@@ -105,8 +105,7 @@ body {
   font-size: 16px; /* 본문 글자 크기 */
   color: #333; /* 본문 글자 색상 */
   line-height: 1.6; /* 줄 간격 */
-  overflow-y: auto; /* 내용이 많아지면 스크롤 */
-  padding: 0px; /* 내부 여백 */
+  padding: 10px; /* 내부 여백 */
   border-radius: 5px; /* 모서리 둥글게 */
   border-top: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
   border-bottom: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
