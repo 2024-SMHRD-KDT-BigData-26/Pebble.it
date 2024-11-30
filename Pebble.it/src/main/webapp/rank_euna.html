@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pebble.it</title>
+
+    <!-- jQuery 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 사이드바 -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css" />
+
+    <!-- 메인 레이아웃 관련 스타일 -->
+    <link rel="stylesheet" href="resources/css/rank_euna.css" />
+    <!-- 홈 컨텐츠 관련 CSS -->
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css">
+    <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+</head>
+
+<body>
+    <!-- 사이드바 로드 -->
+    <div class="sidebar">
+        <script>
+            $(document).ready(function () {
+                $(".sidebar").load("Sidebar.html", function (response, status, xhr) {
+                    if (status == "error") {
+                        $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <div class="main-content">
+        <!-- 콘텐츠 컨테이너 -->
+        <div class="content-container">
+            <!-- 왼쪽 콘텐츠 영역 -->
+            <div class="left-content">
+                <!-- 왼쪽 상단 콘텐츠 박스 -->
+                <div class="content-box">
+                    <div class="content-header">
+                        <h2 class="content-title">내 달성률</h2>
+                    </div>
+                    <div class="content-body">
+                        <p>여기에 왼쪽 상단 콘텐츠 내용이 들어갑니다.</p>
+                    </div>
+                </div>
+
+                <!-- 왼쪽 하단 콘텐츠 박스 -->
+                <div class="content-box">
+                    <div class="content-header">
+                        <h2 class="content-title">내 뱃지</h2>
+                    </div>
+                    <div class="content-body">
+                        <div class="achievement-container">
+                            <!-- 1번 뱃지 -->
+                            <div class="achievement-item">
+                                <!-- 미획득 이미지 -->
+                                <img src="resources/img/badge_icons1-1.png" alt="미획득 일정" class="not-achieved">
+                                <!-- 획득 이미지 -->
+                                <img src="resources/img/badge_icons1.webp" alt="획득 일정" class="achieved">
+                                <span>일정 10개 등록</span>
+                            </div>
+                            <!-- 2번 뱃지 -->
+                            <div class="achievement-item">
+                                <img src="resources/img/badge_icons2-1.png" alt="미획득" class="not-achieved">
+                                <img src="resources/img/badge_icons2.webp" alt="획득" class="achieved">
+                                <span>할 일 10개 완료</span>
+                            </div>
+                            <!-- 3번 뱃지 -->
+                            <div class="achievement-item">
+                                <img src="resources/img/badge_icons3-1.png" alt="미획득" class="not-achieved">
+                                <img src="resources/img/badge_icons3.webp" alt="획득" class="achieved">
+                                <span>나의 기록 3일 이상 작성</span>
+                            </div>
+                            <!-- 4번 뱃지 -->
+                            <div class="achievement-item">
+                                <img src="resources/img/badge_icons4-1.png" alt="미획득" class="not-achieved">
+                                <img src="resources/img/badge_icons4.webp" alt="획득" class="achieved">
+                                <span>일일 포인트 20점 획득</span>
+                            </div>
+                            <!-- 5번 뱃지 -->
+                            <div class="achievement-item">
+                                <img src="resources/img/badge_icons5-1.png" alt="미획득" class="not-achieved">
+                                <img src="resources/img/badge_icons5.webp" alt="획득" class="achieved">
+                                <span>누적 포인트 100점 획득</span>
+                            </div>
+                            <!-- 6번 뱃지 -->
+                            <div class="achievement-item">
+                                <img src="resources/img/badge_icons6-1.png" alt="미획득" class="not-achieved">
+                                <img src="resources/img/badge_icons6.webp" alt="획득" class="achieved">
+                                <span>포인트 순위 1위 달성</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 오른쪽 콘텐츠 -->
+            <div class="right-content">
+                <div class="content-box">
+                    <div class="content-header">
+                        <h2 class="content-title">포인트 순위</h2>
+                    </div>
+                    <div class="content-body">
+                        <p>여기에 오른쪽 콘텐츠 내용이 들어갑니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

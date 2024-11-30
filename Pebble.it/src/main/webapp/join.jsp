@@ -6,9 +6,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebble.it 회원가입</title>
-  <link rel="stylesheet" href="join.css">
-  <script defer src="resources/js/formValidation.js"></script> <!-- 유효성 검사 스크립트 -->
+  <title>Pebble.it</title>
+
+  <link rel="stylesheet" href="resources/css/join.css">
+  <!-- 랜덤 배경 JS-->
+	<script src="resources/js/rd_img.js"></script>
+  <!-- 유효성 검사 스크립트 -->
+  <script defer src="resources/js/formValidation.js"></script>
 </head>
 <body>
     <!-- 왼쪽 섹션: 이미지 배경 -->
@@ -18,8 +22,8 @@
 
     <!-- 오른쪽 섹션: 회원가입 폼 -->
     <div class="right_section">
-        <p class="subtitle">나만의 운동 일정 플랫폼</p>
-        <h2 class="main-title">Pebble.it</h2>
+        <span id="top_title"><img src="resources/img/pebble.png" alt="페블잇" id="pebble">나만의 운동 일정 관리 플랫폼</span>
+		<img src="resources/img/pebble_it_big_logo.png" id="pebble_it_big_logo">
 
         <!-- 회원가입 폼 -->
         <form action="Join" method="post" enctype="multipart/form-data">

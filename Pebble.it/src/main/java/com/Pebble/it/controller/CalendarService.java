@@ -2,6 +2,7 @@ package com.Pebble.it.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -22,36 +23,35 @@ public class CalendarService extends HttpServlet {
 			throws ServletException, IOException {
 		// 한글 인코딩 처리
 		request.setCharacterEncoding("UTF-8");
-		// Form 데이터 받아오기
-		String title = request.getParameter("title");
-		String datetime = request.getParameter("datetime");
-		String allDay = request.getParameter("allDay");
-		String memo = request.getParameter("memo");
 
-		// 종일 체크 여부 처리
-		boolean isAllDay = "on".equals(allDay);
+        // 클라이언트에서 받은 파라미터 읽기
+        String title = request.getParameter("title");
+        String date = request.getParameter("datetime");
+        String memo = request.getParameter("memo");
 
-		 // 날짜와 시간 형식 변환
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        LocalDateTime parsedDateTime = LocalDateTime.parse(datetime, formatter);
+        // 입력값 검증 (필요한 경우)
+        if (title == null || title.isEmpty() || date == null || date.isEmpty()) {
+            response.sendRedirect("error.jsp");
+            return;
+        }
 
-        // DTO 객체 생성
+        // 날짜 형식 변환
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+
+        // DTO 객체 생성 및 데이터 설정
         CalendarDTO dto = new CalendarDTO();
         dto.setTitle(title);
-        dto.setDatetime(parsedDateTime);
-        dto.setAllDay(isAllDay);
-        dto.setDatetime(parsedDateTime);
-        
-        // DAO 호출
+        dto.setDatetime(parsedDate);
+        dto.setMemo(memo);
+
+        // DAO 호출 및 결과 처리
         CalendarDAO dao = new CalendarDAO();
         int result = dao.insertCalendar(dto);
 
-        // 결과에 따라 페이지 이동
         if (result > 0) {
-            // 성공 시
             response.sendRedirect("calendar.jsp");
         } else {
-            // 실패 시
             response.sendRedirect("error.jsp");
         }
     }
