@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pebble.it</title>
+    <title>diary_list</title>
 
     <!-- FullCalendar Library -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js"></script>
@@ -15,14 +16,13 @@
     <!-- CSS 연결 -->
     <link rel="stylesheet" href="resources/css/Sidebar.css"> <!-- 사이드바 스타일 -->
     <link rel="stylesheet" href="resources/css/diary.css"> <!-- 메인 콘텐츠 스타일 -->
-
 </head>
-
 <body>
-    <!-- 레이아웃 컨테이너 -->
+ <!-- 레이아웃 컨테이너 -->
+    <div class="layout">
         <!-- 사이드바 -->
         <div class="sidebar">
-            <script>
+              <script>
                 $(document).ready(function () {
                     $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
                         if (status == "error") {
@@ -132,5 +132,4 @@
                 </div>
             
 </body>
-
 </html>

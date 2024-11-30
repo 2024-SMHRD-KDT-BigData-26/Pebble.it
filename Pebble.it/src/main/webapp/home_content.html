@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Stylesheets -->
+    <!-- 사이드바 스타일 시트 -->
     <link rel="stylesheet" href="resources/css/Sidebar.css" />
     <!-- 사이드바 스타일 시트 -->
     <link rel="stylesheet" href="resources/css/we_calender.css" />
@@ -23,10 +24,9 @@
   </head>
 
   <body>
-    <!-- 레이아웃 컨테이너 -->
-    <div class="layout">
       <!-- 사이드바 로드 -->
       <div class="sidebar">
+
          <script>
                 $(document).ready(function () {
                     $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
@@ -37,6 +37,17 @@
                     });
                 });
             </script>
+
+        <script>
+          $(document).ready(function () {
+              $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                  if (status == "error") {
+                      // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
+                      $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                  }
+              });
+          });
+      </script>
       </div>
 
       <!-- 메인 콘텐츠 영역 -->
@@ -148,8 +159,5 @@
           <script type="module" src="resources/js/ai.js"></script>
         </div>
         </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
