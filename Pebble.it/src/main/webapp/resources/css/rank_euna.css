@@ -35,7 +35,7 @@ body {
     width: calc(100% - 250px); /* 사이드바 제외한 나머지 공간 */
     display: flex;
     justify-content: space-between; /* 좌우 콘텐츠 균등 분배 */
-    align-items: stretch; /* 콘텐츠의 높이를 동일하게 맞춤 */
+    align-items: flex-start; /* 세로 방향에서 정렬 */
     gap: 20px;
     height: 100%; /* 부모 높이를 전부 채움 */
 }

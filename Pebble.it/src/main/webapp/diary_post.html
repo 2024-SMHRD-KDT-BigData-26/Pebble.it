@@ -4,22 +4,27 @@
     <title>Pebble.it</title>
 
     <!-- Summernote CSS -->
-    <link rel="stylesheet" href="resources/summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="resources/summernote/summernote-lite.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="resources/css/editor_euna.css">
+    <link rel="stylesheet" href="resources/css/diary_edit.css">
 
     <!-- jQuery (필수) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Summernote JS -->
-    <script src="resources/summernote/summernote-lite.min.js"></script>
+    <script src="resources/summernote/summernote-lite.js"></script>
 
     <!-- Summernote 한국어 언어 파일 -->
-    <script src="resources/summernote/summernote-ko-KR.min.js"></script>
+    <script src="resources/summernote/summernote-ko-KR.js"></script>
 
     <!-- Custom JS -->
-    <script src="resources/js/editor_euna.js" defer></script>
+    <script src="resources/js/diary_edit.js" defer></script>
+
+    <!-- 사이드바 스타일 시트 -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css" />
+    <!-- 캘린더와 메인 레이아웃 관련 스타일 -->
+    <link rel="stylesheet" href="resources/css/we_calender.css" />
 </head>
 
 <body>
@@ -27,15 +32,20 @@
     <div class="sidebar">
         <script>
             $(document).ready(function () {
-                // 사이드바 동적 로드
-                $(".sidebar").load("Sidebar.html");
+                $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                    if (status == "error") {
+                        // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
+                        $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                    }
+                });
             });
         </script>
     </div>
-
+    
     <!-- 메인 콘텐츠 -->
     <div class="main-content">
-
+        
+        <span class="post_title">나의기록 등록</span>
         <!-- 제목 입력 -->
         <div class="title-input-container">
         

@@ -7,11 +7,14 @@ $(document).ready(function () {
     });
 
     // 취소 버튼 클릭 이벤트 처리
-    $('#cancel-btn').click(function () {
-        // 사용자에게 작성 중인 내용을 취소할지 확인
+    $('#cancel-btn').click(function() {
         if (confirm('작성 중인 내용을 취소하시겠습니까?')) {
-            $('#editor-title').val(''); // 제목 입력 필드를 초기화
-            $('#summernote').summernote('reset'); // 에디터 내용을 초기화
+            // 에디터와 제목 입력 필드 초기화 (기존 코드)
+            $('#editor-title').val('');
+            $('#summernote').summernote('reset');
+    
+            // 이전 페이지로 이동
+            window.history.back();
         }
     });
 

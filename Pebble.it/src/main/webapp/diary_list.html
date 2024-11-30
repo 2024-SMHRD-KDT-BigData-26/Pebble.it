@@ -27,7 +27,7 @@
                     $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
                         if (status == "error") {
                             // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
-                            $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                            $(".sidebar").load("/Pebble.it/Sidebar.html");
                         }
                     });
                 });
@@ -54,8 +54,8 @@
             <div class="content-wrapper">
                 <!-- 기록 콘텐츠 -->
                 <div class="diary-content">
-                    <!-- 기록 목록-->
-                        <a href="#"><table width="100%" class="diary_content_list">
+                    <!-- 기록 목록: 최대 4개 출력 -->
+                        <a href="diary_detail.html"><table width="100%" class="diary_content_list">
                             <tr>
                                 <td><span class="diary_category_label_01_diary">나의기록</span>2024.12.31(목)</td>
                                 <td rowspan="3"><img src="resources/img/diary_sample_img.png" id="diary_img"></td>
@@ -70,7 +70,7 @@
                             </tr>
                         </table></a>
 
-                        <a href="#"><table width="100%" class="diary_content_list">
+                        <a href="diary_detail.html"><table width="100%" class="diary_content_list">
                             <tr>
                                 <td><span class="diary_category_label_02_sport">운동정보</span>2024.12.31(목)</td>
                                 <td rowspan="3"><img src="resources/img/diary_sample_img.png" id="diary_img"></td>
@@ -85,7 +85,7 @@
                             </tr>
                         </table></a>
 
-                        <a href="#"><table width="100%" class="diary_content_list">
+                        <a href="diary_detail.html"><table width="100%" class="diary_content_list">
                             <tr>
                                 <td><span class="diary_category_label_03_recomment">추천할일</span>2024.12.31(목)</td>
                                 <td rowspan="3"><img src="resources/img/diary_sample_img.png" id="diary_img"></td>
@@ -100,7 +100,7 @@
                             </tr>
                         </table></a>
 
-                        <a href="#"><table width="100%" class="diary_content_list">
+                        <a href="diary_detail.html"><table width="100%" class="diary_content_list">
                             <tr>
                                 <td><span class="diary_category_label_01_diary">나의기록</span>2024.12.31(목)</td>
                                 <td rowspan="3"><img src="resources/img/diary_sample_img.png" id="diary_img"></td>
