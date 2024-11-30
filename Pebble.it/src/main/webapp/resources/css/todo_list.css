@@ -1,0 +1,221 @@
+
+/* 폰트 설정 */
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 전체 요소에 폰트 적용 */
+* {
+  font-family: 'GmarketSansMedium', sans-serif;
+}
+
+/* 전체 레이아웃 */
+body {
+  margin: 0;
+  display: flex;
+  background-color: #F5F5F5;
+  height: 100vh; /* 화면 전체 높이 */
+}
+
+/* 레이아웃 컨테이너 */
+.layout {
+  display: flex;
+  width: 100%; /* 전체 화면 너비 */
+  height: 100%; /* 전체 화면 높이 */
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 250px; /* 사이드바 너비 */
+  background-color: #2f3b4e;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  /*height: 100vh;  사이드바가 화면 전체 높이를 차지하도록 설정 */
+  /* flex-shrink: 0; 사이드바 크기 고정 */
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  margin-left: 250px; /* 사이드바 너비만큼 공간 확보 */
+  padding: 50px;
+  box-sizing: border-box;
+  width: calc(100% - 250px); /* 사이드바를 제외한 나머지 공간 */
+  
+}
+
+/* 할일 등록 버튼 */
+.calendar-toolbar {
+  display: flex; /* 버튼을 왼쪽으로 정렬 */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 할일 등록 버튼 */
+.calendar-toolbar .btn {
+  background-color: #DE9631;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* 콘텐츠 전체 레이아웃 */
+.content-wrapper {
+  display: flex;
+  justify-content: space-between; /* 좌우 콘텐츠 나란히 배치 */
+  gap: 10px; /* 콘텐츠 간격 */
+  width: 100%; /* main-content 내부 전체 차지 */
+  box-sizing: border-box; /* 패딩과 테두리 포함 크기 계산 */
+}
+
+/* 왼쪽 콘텐츠 */
+.left-content,
+.right-content {
+  flex: 1; /* 동일한 비율로 공간 차지 */
+  max-width: 49%; /* 화면에서 두 콘텐츠가 차지할 최대 너비 설정 */
+  height: 750px; /* 콘텐츠 높이 설정 (필요하면 수정 가능) */
+  background-color: white; /* 배경색 */
+  border-radius: 8px; /* 둥근 모서리 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  box-sizing: border-box;
+}
+
+.left-content {
+  position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
+  flex: 3;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding-bottom: 60px; /* 페이지네이션 여백 추가 */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.left-content h3 {
+  margin-top: 0; /* 제목 상단 여백 제거 */
+  color: #333;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.todo-list li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* 페이지네이션 컨테이너 */
+.pagination {
+  position: absolute;
+  bottom: 10px; /* 박스 하단에서 간격 */
+  left: 20px; /* 왼쪽에서 간격 */
+  width: calc(100% - 40px); /* 좌우 padding 고려 */
+  display: flex;
+  justify-content: space-between; /* 좌우 정렬 */
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* 왼쪽 하단: 페이지 정보 스타일 */
+.page-info {
+  font-size: 14px;
+  color: #888;
+  align-self: flex-end; /* 아래쪽 정렬 */
+}
+
+/* 오른쪽 하단: 버튼 컨테이너 */
+.button-container {
+  display: flex; /* 버튼을 나란히 배치 */
+  gap: 5px; /* 버튼 사이 간격 */
+ 
+}
+
+/* 버튼 스타일 */
+.pagination-btn {
+  width:50px;
+  padding: 7px 10px;
+  background-color: #36454F;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 버튼 hover 효과 */
+.pagination-btn:hover {
+  background-color: #455A6F;
+}
+
+
+.right-content h3 {
+  margin-top: 0; /* 제목 상단 여백 제거 */
+  color: #333;
+}
+
+.right-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.right-content ol {
+  margin: 10px 0;
+  padding-left: 20px; /* 목록 안쪽 들여쓰기 */
+  color: #444;
+}
+
+#scheduleBtn, #modalCloseButton, .btn {
+  cursor: pointer;
+}
+
+/* 할일 목록 관련 시작*/
+
+/* 체크박스 컨테이너 스타일 추가 */
+.todo_content label {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+  margin-bottom: 18px;
+
+}
+
+[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #de9631;
+  margin-right: 8px;  /* 체크박스와 텍스트 사이 간격 */
+  flex-shrink: 0;     /* 체크박스 크기 고정 */
+}
+
+/* 체크박스 취소선 */
+.strikethrough {
+  text-decoration: line-through;
+  color: #A5B4CB;
+}
+
+
+/* 할일 목록 관련 끝*/
+
+/* 수정, 삭제 이미지 버튼 */
+#icon_resize {
+  width: 14px;
+  height: 14px;
+}

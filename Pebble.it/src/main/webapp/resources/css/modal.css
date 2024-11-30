@@ -1,0 +1,118 @@
+/* 모달 전체 기본틀 */
+.modal {
+    display: none; /* 기본적으로 숨김 처리 */
+    position: fixed; /* 화면에서 스크롤해도 위치 고정 */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 설정 */
+    left: 0; /* 화면 왼쪽부터 시작 */
+    top: 0; /* 화면 위쪽부터 시작 */
+    width: 100%; /* 화면 전체 너비 */
+    height: 100%; /* 화면 전체 높이 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 활성화 */
+    background-color: rgba(0, 0, 0, 0.5); /* 배경색 투명도 추가 (검정, 투명도 50%) */
+    justify-content: center; /* 중앙에 표시되도록 설정 */
+    align-items: center; /* 중앙에 표시되도록 설정 */
+  }
+  
+  /* 모달 창 기본틀 */
+  .modal-content {
+    position: relative;
+    background-color: #ffffff;
+    width: 400px;
+    height: 120px;
+    padding: 10px;
+    z-index: 1001; /* 모달 콘텐츠가 모달 배경 위에 표시되도록 설정 */
+    border-radius: 5px;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+  }
+  
+  #modalContainer.hidden {
+    display: none;
+  }
+  
+  #modalCloseButton {
+    float: right;
+    background-color:#fff;
+      color: #000;
+      border:none;
+  }
+  
+  .modal_table {
+    width: 400px;
+    height: 120px;
+    /*border : 1px solid black;*/
+    border-collapse : collapse;
+  }
+  
+  .tr_line {
+      border-bottom: 1px solid #EAEDF2 !important;/* 행의 하단에 실선 추가 */
+  }
+  
+  #todo_content {
+    width: 400px; /* 너비 설정 */
+    color: #D3D3D3; /* 텍스트 색상 설정 */
+    margin-top: 5px; /* 위쪽 간격 설정 */
+    padding: 5px; /* 입력 필드 내부 여백 추가 */
+    border: 1px solid #969696; /* 테두리 설정 */
+    border-radius: 4px; /* 둥근 모서리 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+    border-collapse: separate;
+  }
+  
+  .modal-button {
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center; /* 버튼 수평 중앙 정렬 */
+  }
+  
+  #cancel-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D3D3D3;
+    color: #838F9B;
+    border: none;
+  }
+  
+  #submit-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #DE9631;
+    color: white;
+    border: none;
+  }
+
+  #edit-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #DE9631;
+    color: white;
+    border: none;
+  }
+
+  #delete-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #D64949;
+    color: white;
+    border: none;
+  }
+
+  #delete_msg {
+    padding-top: 10px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+
+  

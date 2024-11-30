@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sidebar</title>
   <link rel="stylesheet" href="resources/css/Sidebar.css">
+      	<!-- 모달 스타일 연결 -->
+        <link rel="stylesheet" href="resources/css/modal.css">
 </head>
+
 <body>
   <!-- 사이드바 영역, 클래스로 수정 -->
   <div class="left-sidebar">
@@ -21,7 +25,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <a href="#"><div id="info_config"><img src="resources/img/info_config_img.png">&nbsp;&nbsp;내 정보 변경</div></a>
+            <a href="#"><div id="info_config" class="btn"><img src="resources/img/info_config_img.png">&nbsp;&nbsp;내 정보 변경</div></a>
           </td>
         </tr>
       </table>
@@ -36,5 +40,36 @@
       <a href="#"><div id="logout_menu"><img src="resources/img/logout_img.png">&nbsp;&nbsp;로그아웃</div></a>
     </nav>
   </div>
+
+  <!-- 할일 등록 모달창-->
+  <div id="modalContainer" class="modal">
+    <!-- 할일 등록 모달 내용 -->
+    <div id="todo_post_modal" class="modal-content">
+      <table class="modal_table">
+        <tr class="tr_line">
+          <td>할일 등록
+            <!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
+            <!-- <button id="modalCloseButton" class="close">X</button> -->
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="todo_content" placeholder="할일 내용"></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="button-container">
+              <button id="cancel-button" class="close">취소</button>
+              <button id="submit-button" class="submit-button">등록</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- 할일 등록 모달 내용 끝 -->
+  </div>
+        <!-- 할일 등록 모달창 끝-->
+
+        <!-- JavaScript 파일 연결 -->
+	<script src="resources/js/modal.js"></script>
 </body>
 </html>

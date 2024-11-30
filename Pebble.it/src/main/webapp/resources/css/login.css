@@ -1,3 +1,17 @@
+/* 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 요소에 폰트 적용 */
+* {
+    font-family: 'GmarketSansMedium', sans-serif;
+}
+
+
 /* 기본 스타일 */
 * {
     margin: 0;
@@ -6,7 +20,6 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -20,31 +33,27 @@ body {
 
 /* 왼쪽 섹션 */
 .left_section {
-    width: 50%; /* 화면의 절반 차지 */
-    background-image: url('img/Main_swimming.jpg'); /* 배경 이미지 */
-    background-size: cover; /* 이미지 비율 유지하며 영역 채우기 */
-    background-position: center; /* 이미지 가운데 정렬 */
+    position: relative;
+    width: 50%;
+    height: 100vh; /* 높이 설정 */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s; /* 부드러운 전환 효과 */
 }
 
 .left_text {
-    position: absolute; /* 위치를 부모 요소 기준으로 설정 */
-    top: 50px; /* 위쪽에서 50px 떨어짐 */
-    margin-left: 170px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정중앙으로 이동 */
     color: white; /* 텍스트 색상 */
     font-size: 36px; /* 텍스트 크기 */
-    font-weight: bold; /* 텍스트 굵게 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
 }
 
 .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    font-size: 36px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    position: relative; /* 부모 기준 위치 */
+    width: 100%;
+    height: 100vh;
 }
 
 /* 우측 섹션 */
@@ -66,7 +75,28 @@ body {
 }
 
 .right-section h2 .dot {
-    color: #FFB400;
+    color: #DE9631;
+}
+
+#pebble {
+ width: 20px;
+ height: 20px;
+}
+
+#pebble_it_big_logo {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+}
+
+/* 상단 타이틀 텍스트 */
+#top_title {
+    width: 300px;
+    display: inline-flex; /* Flexbox 활성화 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 10px; /* 이미지와 텍스트 간격 */
+    font-size: 16px;
 }
 
 .logo {
@@ -90,8 +120,12 @@ form input {
     font-size: 14px;
 }
 
+input::placeholder {
+    color: #d3d3d3;
+}
+
 form button {
-    background-color: #FFA500;
+    background-color: #DE9631;
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -102,7 +136,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #FF8C00;
+    background-color: #FF9F2D;
 }
 
 /* 링크 스타일 수정 */
@@ -113,7 +147,7 @@ form p a {
 }
 
 form p a:hover {
-    color: #FFA500; /* 오렌지색으로 변경 */
+    color: #DE9631; /* 오렌지색으로 변경 */
 }
 
 form p {

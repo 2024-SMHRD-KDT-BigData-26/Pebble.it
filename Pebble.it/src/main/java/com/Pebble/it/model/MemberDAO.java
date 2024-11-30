@@ -48,9 +48,10 @@ public class MemberDAO {
 	}
 
 	public boolean checkDuplicateId(String id) {
-		try {
-			String result = sqlSession.selectOne("MemberMapper.checkDuplicateId", id);
-			return "Y".equals(result); // "Y"와 비교
+		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+			String result = sqlSession.selectOne("com.Pebble.it.db.MemberMapper.checkDuplicateId", id);
+			System.out.println("쿼리 실행 결과 (아이디): " +result); // 디버깅용 로그
+			return "Y".equals(result);  // "Y"는 중복, 그렇지 않으면 중복 아님
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false; // 예외 발생 시 중복된 것으로 간주
@@ -58,13 +59,22 @@ public class MemberDAO {
 	}
 
 	public boolean checkDuplicateNickname(String nickname) {
-		try {
-			String result = sqlSession.selectOne("MemberMapper.checkDuplicateNickname", nickname);
-			return "Y".equals(result); // "Y"와 비교
+		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+			String result = sqlSession.selectOne("com.Pebble.it.db.MemberMapper.checkDuplicateNickname", nickname);
+			System.out.println("쿼리 실행 결과 (닉네임): " +result); // 디버깅용 로그
+			return "Y".equals(result); // "Y"는 중복, 그렇지 않으면 중복 아님
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false; // 예외 발생 시 중복된 것으로 간주
 		}
+	}
+
+	public SqlSession getSqlSession() {
+		return sqlSession;
+	}
+
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
 	}
 
 }
