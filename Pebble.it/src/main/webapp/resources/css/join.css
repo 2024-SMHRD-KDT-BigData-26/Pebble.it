@@ -1,3 +1,16 @@
+/* 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 요소에 폰트 적용 */
+* {
+    font-family: 'GmarketSansMedium', sans-serif;
+}
+
 /* 전체 초기화 */
 body {
     margin: 0; /* 기본 여백 제거 */
@@ -7,29 +20,39 @@ body {
 
 /* 왼쪽 섹션 */
 .left_section {
-    width: 50%; /* 화면의 절반 차지 */
-    background-image: url('img/Main_swimming.jpg'); /* 배경 이미지 */
-    background-size: cover; /* 이미지 비율 유지하며 영역 채우기 */
-    background-position: center; /* 이미지 가운데 정렬 */
+    position: relative;
+    width: 50%;
+    height: 100vh; /* 높이 설정 */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s; /* 부드러운 전환 효과 */
 }
 
 .left_text {
-    position: absolute; /* 위치를 부모 요소 기준으로 설정 */
-    top: 50px; /* 위쪽에서 50px 떨어짐 */
-    margin-left: 170px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정중앙으로 이동 */
     color: white; /* 텍스트 색상 */
     font-size: 36px; /* 텍스트 크기 */
-    font-weight: bold; /* 텍스트 굵게 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
+}
+
+.overlay {
+    position: relative; /* 부모 기준 위치 */
+    width: 100%;
+    height: 100vh;
 }
 
 /* 오른쪽 섹션 */
 .right_section {
-    flex: 1; /* 나머지 공간 차지 */
-    width: 50%; /* 화면의 절반 */
-    background-color: #36454F; /* 배경색 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    padding: 20px; /* 내부 여백 */
+    flex: 1;
+    background-color: #394450;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 /* 부제목 스타일 */
@@ -95,11 +118,15 @@ body {
 }
 
 .Join input {
-    flex: 1; /* 입력창의 크기를 버튼과 비율 조정 */
     padding: 10px; /* 내부 여백 */
     border-radius: 5px; /* 모서리 둥글게 */
     border: 1px solid #ccc; /* 입력창 테두리 */
     font-size: 0.9rem; /* 텍스트 크기 */
+    width: 300px;
+}
+
+#password {
+    width: 390px;
 }
 
 /* 중복확인 버튼 */
@@ -136,15 +163,57 @@ body {
     
     background-color: #ccc; /* 취소 버튼 배경색 */
     color: #333; /* 텍스트 색상 */
+    width: 200px;
+
 }
 
 .join-btn {
-    background-color: orange; /* 회원가입 버튼 배경색 */
+    background-color: #DE9631; /* 회원가입 버튼 배경색 */
     color: white; /* 텍스트 색상 */
+    width: 200px;
 }
 
 /* 비밀번호 에러 메시지 */
 .error-message {
     margin-top: 5px; /* 위쪽 여백 */
     font-size: 0.8rem; /* 텍스트 크기 */
+}
+
+#pebble {
+    width: 20px;
+    height: 20px;
+   }
+   
+   #pebble_it_big_logo {
+       width: 300px;
+       height: auto;
+       margin: 20px;
+       margin-bottom: 30px;
+   }
+   
+   /* 상단 타이틀 텍스트 */
+   #top_title {
+       width: 300px;
+       display: inline-flex; /* Flexbox 활성화 */
+       align-items: center; /* 세로 중앙 정렬 */
+       justify-content: center; /* 가로 중앙 정렬 */
+       gap: 10px; /* 이미지와 텍스트 간격 */
+       font-size: 16px;
+   }
+
+   /* 라디오 버튼 스타일 */
+   input[type="radio"] {
+    appearance: none; /* 기본 브라우저 스타일 제거 */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 선택된 상태 스타일 */
+input[type="radio"]:checked {
+    background-color: #DE9631;
+    border-color: #fff;
 }

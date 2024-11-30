@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Pebble.it.db.CalendarMapper">
-  <insert id="insertSchedule" parameterType="com.Pebble.it.model.CalendarDTO">
-    INSERT INTO schedule (
-        title,
-        datetime,
-        is_all_day,
-        memo
-    )
-    VALUES (
-        #{title},
-        #{datetime},
-        #{isAllDay},
-        #{memo}
-    )
-</insert>
+	<!-- 일정 등록 쿼리 -->
+	<insert id="insertCalendar"
+		parameterType="com.Pebble.it.model.CalendarDTO">
+		INSERT INTO tb_calendar (
+		cal_title,cal_st_dt,cal_ed_dt,cal_content
+		) VALUES (
+		#{cal_title},#{cal_st_dt},#{cal_ed_dt},#{cal_content}
+		)
+	</insert>
 </mapper>
