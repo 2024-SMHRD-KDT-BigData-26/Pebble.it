@@ -217,3 +217,20 @@ input[type="radio"]:checked {
     background-color: #DE9631;
     border-color: #fff;
 }
+
+.error-tooltip {
+    position: absolute;
+    background-color: #ffe8e8;
+    color: #ff0000;
+    padding: 5px 10px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 5px;
+    display: none; /* 초기에는 숨김 */
+}
+
+input.invalid {
+    border: 1px solid #ff0000;
+}
