@@ -14,10 +14,11 @@
 
     <!-- 메인 레이아웃 관련 스타일 -->
     <link rel="stylesheet" href="resources/css/rank_euna.css" />
-    <!-- 홈 컨텐츠 관련 CSS -->
 
+    <!-- 차트 관련 CSS, JS -->
     <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css">
     <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+
 </head>
 
 <body>
@@ -27,7 +28,7 @@
             $(document).ready(function () {
                 $(".sidebar").load("Sidebar.html", function (response, status, xhr) {
                     if (status == "error") {
-                        $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                        $(".sidebar").load("/Pebble.it/Sidebar.html");
                     }
                 });
             });
@@ -46,10 +47,28 @@
                         <h2 class="content-title">내 달성률</h2>
                     </div>
                     <div class="content-body">
-                        <p>여기에 왼쪽 상단 콘텐츠 내용이 들어갑니다.</p>
+
+                        <!-- 상단 입력 영역 -->
+                        <div class="top-section">
+                            <div class="sum_point-section">
+                                <p>누적 포인트</p>
+                                <h2>5,000P</h2>
+                            </div>
+                            <div class="today_point-section">
+                                <p>오늘 적립된 포인트 </p>
+                                <h2>1,000P</h2>
+                            </div>
+                        </div>
+                        <!-- 하단 입력 -->
+                        <div class="bottom-section">
+                            <div class="my_figure_chart" id="bar-chart"></div>
+                            <script type="module" src="resources/js/rank_chart_euna.js"></script>
+                        </div>
+
+
+
                     </div>
                 </div>
-
                 <!-- 왼쪽 하단 콘텐츠 박스 -->
                 <div class="content-box">
                     <div class="content-header">
@@ -99,21 +118,82 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 
+        <!-- 오른쪽 콘텐츠 -->
+        <div class="right-content">
+            <div class="content-box">
+                <div class="content-header">
+                    <h2 class="content-title">포인트 순위</h2>
+                    <img class="info-icon" src="resources/img/impormation.png" alt="정보 아이콘" />
+                </div>
+                <div class="content-body">
+                    <table class="ranking-table">
 
-            <!-- 오른쪽 콘텐츠 -->
-            <div class="right-content">
-                <div class="content-box">
-                    <div class="content-header">
-                        <h2 class="content-title">포인트 순위</h2>
-                    </div>
-                    <div class="content-body">
-                        <p>여기에 오른쪽 콘텐츠 내용이 들어갑니다.</p>
-                    </div>
+                   
+                    
+                        <tr >
+                            <td>1위</td>
+                            <td>사용자 A</td>
+                            <td >10,000P</td>
+                        </tr>
+                        <tr>
+                            <td>2위</td>
+                            <td>사용자 B</td>
+                            <td>9,500P</td>
+                        </tr>
+                        <tr>
+                            <td>3위</td>
+                            <td>사용자 C</td>
+                            <td>9,000P</td>
+                        </tr>
+                        <tr>
+                            <td>4위</td>
+                            <td>사용자 D</td>
+                            <td>8,500P</td>
+                        </tr>
+                        <tr>
+                            <td>5위</td>
+                            <td>사용자 E</td>
+                            <td>8,000P</td>
+                        </tr>
+                        <tr>
+                            <td>6위</td>
+                            <td>사용자 F</td>
+                            <td>7,500P</td>
+                        </tr>
+                        <tr>
+                            <td>7위</td>
+                            <td>사용자 G</td>
+                            <td>7,000P</td>
+                        </tr>
+                        <tr>
+                            <td>8위</td>
+                            <td>사용자 H</td>
+                            <td>6,500P</td>
+                        </tr>
+                        <tr>
+                            <td>9위</td>
+                            <td>사용자 I</td>
+                            <td>6,000P</td>
+                        </tr>
+                        <tr>
+                            <td>10위</td>
+                            <td>사용자 J</td>
+                            <td>5,500P</td>
+                        </tr>
+                        <tr>
+                            <td>11위</td>
+                            <td>사용자 K</td>
+                            <td>5,000P</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </body>
 
