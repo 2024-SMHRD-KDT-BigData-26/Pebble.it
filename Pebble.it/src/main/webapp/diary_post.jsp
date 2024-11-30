@@ -51,8 +51,8 @@
 
         <!-- 버튼 컨테이너 -->
         <div class="button-container">
-            <button id="cancel-btn" class="action-btn cancel-btn">취소</button>
-            <button id="submit-btn" class="action-btn submit-btn">등록</button>
+            <button id="cancel-btn" class="action-btn cancel-btn" onclick="location.href='diary_list.jsp'; return false;">취소</button>
+            <button id="submit-btn" class="action-btn submit-btn" button type="submit">등록</button>
         </div>
         </form>	
     </div>
