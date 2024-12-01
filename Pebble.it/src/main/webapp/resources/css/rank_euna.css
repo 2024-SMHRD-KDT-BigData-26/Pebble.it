@@ -30,57 +30,34 @@ body {
 /* 메인 콘텐츠 영역 */
 .main-content {
     margin-left: 250px;
-    padding: 20px; /* 내부 여백 */
-    box-sizing: border-box; /* 패딩을 박스 크기에 포함 */
-    width: calc(100% - 250px); /* 사이드바 제외한 나머지 공간 */
+    flex: 1; /* 남은 공간을 차지 */
+    padding: 20px;
     display: flex;
-    justify-content: space-between; /* 좌우 콘텐츠 균등 분배 */
-    align-items: flex-start; /* 세로 방향에서 정렬 */
-    gap: 20px;
-    height: 100%; /* 부모 높이를 전부 채움 */
+    gap: 20px; /* 좌우 간격 */
+    box-sizing: border-box;
+    overflow: hidden; /* 스크롤 방지 */
 }
 
 /* 콘텐츠 컨테이너 */
 .content-container {
     display: flex; /* 플렉스 박스로 좌우 배치 */
     gap: 20px; /* 좌우 콘텐츠 간 간격 */
-    flex-grow: 1;
-    height: 90%;
     justify-content: space-between; /* 좌우 간격 유지 */
     align-items: stretch; /* 상하 콘텐츠의 높이를 동일하게 맞춤 */
 }
-
-/* 왼쪽 콘텐츠 영역 */
-.left-content {
-    flex: 1; /* 동일한 비율로 공간 분배 */
-    display: flex; /* 상하 콘텐츠 배치를 위한 플렉스 박스 */
-    flex-direction: column; /* 세로 방향 정렬 */
-    gap: 20px; /* 상하 간격 */
-    height: 100%; /* 부모 높이에 맞추기 */
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: 30px;
-}
-
-/* 왼쪽 콘텐츠 박스 (상단과 하단) */
-.left-content .content-box {
-    flex: 1; /* 남은 공간을 균등하게 분배 */
-    display: flex; /* 플렉스 레이아웃 */
-    flex-direction: column; /* 세로 정렬 */
-     margin-left: 30px;
-}
-
-/* 오른쪽 콘텐츠 영역 */
+/* 콘텐츠 컨테이너 */
+.left-content,
 .right-content {
-    flex: 1; /* 왼쪽과 동일한 비율로 조정 */
-    display: flex; /* 플렉스 적용 */
-    flex-direction: column; /* 세로 방향 배치 */
-    gap: 20px;
-    height: 100%; /* 부모 높이에 맞추기 */
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: 30px;
+    flex: 1; /* 동일한 비율 */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
+
+
 
 /* 콘텐츠 박스 공통 스타일 */
 .content-box {
@@ -106,19 +83,22 @@ body {
 
 /* 정보 아이콘 스타일 */
 .info-icon {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
+/* 콘텐츠 본문 스타일 */
 .content-body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px; /* 내부 여백 */
-    gap: 20px;
+    padding: 5px; /* 내부 여백 */
+    gap: 10px;
+    height: 80px;
 }
 
 /* 콘텐츠 제목 스타일 */
@@ -162,10 +142,69 @@ body {
     font-size: 14px;
     color: #333;
 }
+
 .achievement-item img.achieved {
     display: none; /* 기본으로 숨김 처리 */
 }
 
 .achievement-item img.not-achieved {
     display: block;
+}
+
+/* 왼쪽 상단 중 누적 포인트와 오늘 적립된 포인트 영역 */
+.top-section {
+    display: flex;
+    justify-content: space-between; /* 좌우 정렬 */
+    align-items: center; /* 세로축 중앙 정렬 */
+    background-color: #ffffff; /* 배경색 */
+    padding: 10px 20px; /* 내부 여백 */
+    height: 70px; 
+    width: 90%;
+}
+
+/* 누적 포인트와 오늘 적립된 포인트 글씨 */
+.sum_point-section p, 
+.today_point-section p {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.sum_point-section h2,
+.today_point-section h2 {
+    margin-top: 7px;
+    font-size: 32px;
+    color: #FF9F2D;
+}
+
+/* 차트 컨테이너 스타일 */
+.bottom-section {
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+    display: flex;
+    justify-content: center; /* 차트 가운데 정렬 */
+    align-items: center; /* 차트 세로 가운데 정렬 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    width: 100%;
+    height: 70px;
+}
+
+/* bottom-section 내 차트 크기 조정 */
+.bottom-section .my_figure_chart {
+    height: 100%; /* bottom-section 높이에 맞춤 */
+    width: 100%; /* 너비 전체 사용 */
+}
+
+/* Toast UI 차트 컨테이너 */
+.my_figure_chart {
+    width: 100%; /* 부모 너비의 90% */
+    height: 80%; /* 부모 높이의 90% */
+}
+
+/* 테이블 스타일 */
+.ranking-table {
+    width: 100%; /* 테이블 너비 */
+    height: 100%;
+    border-collapse: collapse; /* 테두리 중첩 제거 */
+    margin: 10px 0; /* 테이블 상하 간격 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-size: 16px; /* 글씨 크기 */
 }

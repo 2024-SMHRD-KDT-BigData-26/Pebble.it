@@ -16,5 +16,4 @@ function achieveBadge(index) {
     }
 }
 
-// 예시: 첫 번째 뱃지를 획득 상태로 변경
-achieveBadge(0);
+});
