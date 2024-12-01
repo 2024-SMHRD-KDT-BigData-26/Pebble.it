@@ -30,8 +30,8 @@
           $(document).ready(function () {
               $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
                   if (status == "error") {
-                      // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
-                      $(".sidebar").load("/Pebble.it/Sidebar.htm");
+                      // 만약 Sidebar.html이 로드되지 않으면 /Pebble.it/Sidebar.html으로 대체 시도
+                      $(".sidebar").load("/Pebble.it/Sidebar.html");
                   }
               });
           });
