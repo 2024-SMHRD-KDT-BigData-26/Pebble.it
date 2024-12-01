@@ -35,7 +35,7 @@
       <a href="calender.html"><div id="menu_name"><img src="resources/img/calender_menu_img.png">&nbsp;&nbsp;일정</div></a>
       <a href="todo_list.html"><div id="menu_name"><img src="resources/img/todo_menu_img.png">&nbsp;&nbsp;할일</div></a>
       <a href="diary_list.html"><div id="menu_name"><img src="resources/img/diary_menu_img.png">&nbsp;&nbsp;기록</div></a>
-      <a href="#"><div id="menu_name"><img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지</div></a>
+      <a href="rank_euna.html"><div id="menu_name"><img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지</div></a>
 
       <a href="#"><div id="logout_menu"><img src="resources/img/logout_img.png">&nbsp;&nbsp;로그아웃</div></a>
     </nav>
@@ -49,7 +49,7 @@
     <div id="todo_post_modal" class="modal-content_config">
       <table class="modal_table">
         <tr class="tr_line">
-          <td>내 정보 변경 <span class="resign">회원 탈퇴</span>
+          <td>내 정보 변경 <button id="resign" class="btn">회원 탈퇴</button>
             <!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
             <!-- <button id="modalCloseButton" class="close">X</button> -->
           </td>
@@ -125,6 +125,34 @@
     <!-- 내 정보 변경 모달 내용 끝 -->
   </div>
         <!-- 내 정보 변경 모달창 끝-->
+  
+        <!-- 회원 삭제 모달창-->
+			<div id="modalContainer" class="modal">
+				<!-- 회원 삭제 모달 내용 -->
+				<div id="user_delete_modal" class="modal-content">
+					<table class="modal_table">
+                        <tr class="tr_line">
+                            <td>회원 탈퇴
+                                <!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
+                                <!-- <button id="modalCloseButton" class="close">X</button> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="delete_msg">탈퇴 시 이용내역은 복구할 수 없습니다.<br> 탈퇴하시겠습니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="button-container">
+                                    <button id="cancel-button" class="close">취소</button>
+                                    <button id="delete-button" class="submit-button">삭제</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+				</div>
+				<!-- 기록 삭제 모달 내용 끝 -->
+			</div>
+            <!-- 기록 삭제 모달창 끝-->
 
         <!-- JavaScript 파일 연결 -->
 	<script src="resources/js/modal.js"></script>
