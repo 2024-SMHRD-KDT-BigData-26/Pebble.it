@@ -24,6 +24,8 @@ public class MemberDTO {
         this.PW = pw;
     }
     
+
+    
 }
 
 

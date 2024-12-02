@@ -19,6 +19,6 @@
     %>
 
     <!-- 로그인 성공 시 사용자 환영 메시지 -->
-    <h1>환영합니다, <%= loginUser.getId() %>님!</h1>
+    <h1>환영합니다, <%= loginUser.getUSER_ID() %>님!</h1>
 </body>
 </html>

@@ -1,5 +1,11 @@
 package com.Pebble.it.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.Pebble.it.db.SqlSessionManager;
@@ -75,6 +81,26 @@ public class MemberDAO {
 
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	
+	// 특정 유저의 정보 가져오기
+	public List<MemberDTO> selectUser(String userId) {
+	    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+	        // MyBatis 매퍼 호출
+	        List<MemberDTO> list = sqlSession.selectList("com.Pebble.it.db.MemberMapper.selectUser", userId);
+
+	        if (list != null && !list.isEmpty()) {
+	            System.out.println("유저 정보 조회 성공: " + list.size() + "명의 유저 데이터");
+	        } else {
+	            System.out.println("유저 정보 조회 실패 또는 데이터 없음");
+	        }
+
+	        return list; // 결과 반환
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println("유저 정보 조회 중 오류 발생: " + e.getMessage());
+	        return new ArrayList<>(); // 오류 발생 시 빈 리스트 반환
+	    }
 	}
 
 }
