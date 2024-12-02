@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Pebble.it.db.todoMapper">
+ <!-- 1. 할일 등록 -->
+    <insert id="insertTodo" parameterType="com.Pebble.it.model.todoDTO">
+        INSERT INTO tb_todo (
+            todo_idx,
+            user_id,
+            todo_title,
+            todo_status,
+            todo_dt
+        ) VALUES (
+            SEQ_TODO.NEXTVAL, -- 시퀀스 사용
+            #{userId},
+            #{todoTitle},
+            #{todoStatus},
+            SYSDATE
+        )
+    </insert>
+    <!-- 2. 모든 할일 조회 -->
+    <select id="selectAllTodo" resultType="com.Pebble.it.model.todoDTO">
+        SELECT todo_idx, user_id, todo_title, todo_status, todo_dt
+        FROM tb_todo
+        ORDER BY todo_dt DESC
+    </select>
+
+    <!-- 3. 할일 상태 업데이트 -->
+    <update id="updateTodoStatus" parameterType="com.Pebble.it.model.todoDTO">
+        UPDATE tb_todo
+        SET todo_status = #{todoStatus}
+        WHERE todo_idx = #{todoIdx}
+    </update>
+
+    <!-- 4. 할일 삭제 -->
+    <delete id="deleteTodo" parameterType="int">
+        DELETE FROM tb_todo
+        WHERE todo_idx = #{todoIdx}
+    </delete>    
+</mapper>
