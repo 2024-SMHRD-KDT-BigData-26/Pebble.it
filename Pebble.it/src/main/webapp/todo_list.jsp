@@ -1,6 +1,7 @@
-`	<%@page import="com.Pebble.it.model.todoDTO"%>
-<%@page import="java.util.List"%>
 <%@page import="com.Pebble.it.model.todoDAO"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.Pebble.it.model.todoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
 	<link rel="stylesheet" href="resources/css/todo_list.css">
 	<!-- 모달 스타일 연결 -->
 	<link rel="stylesheet" href="resources/css/modal.css">
-	<!-- AI 스타일 연`결 -->
+	<!-- AI 스타일 연결 -->
 	<link rel="stylesheet" href="resources/css/ai.css">
 </head>
 <body>
@@ -55,31 +56,39 @@
 					<div class="left-content">
 						<!-- 할일 목록-->
 			<table width="100%" class="todo_content">
-	<%
-    todoDAO dao = new todoDAO();
-    List<todoDTO> todoList = dao.selectAllTodo();
-
-    if (todoList != null && !todoList.isEmpty()) {
-        for (todoDTO todo : todoList) {
-	%>
-				<tr>
-					<td class="tr_line"><label><input type="checkbox"><span><%= todo.getTodoTitle() %></span></label></td>
-					<td width="40px" class="tr_line"><img src="resources/img/todo_edit_img.png"
-						alt="수정" id="icon_resize" class="btn"></td>
-                    <td width="40px" class="tr_line"><img src="resources/img/todo_delete_img.png"
-                            alt="삭제" id="icon_resize" class="btn"></td>
-                </tr>  
-                <%
-        }
-    } else {
-	%>
-        <tr>
-            <td colspan="3">등록된 할일이 없습니다.</td>
-        </tr>
-	<%
+    <!-- 할일 목록 반복 출력 -->
+    <% 
+    todoDTO result = (todoDTO)session.getAttribute("result");
+    ArrayList<todoDTO> list = new ArrayList<>(); // null 초기화 방지
+    if (result != null) {
+        todoDAO dao = new todoDAO();
+        list = dao.showTodo(result.getUserId());
     }
-	%>    		
-			</table>
+    %>
+    
+    <% if (list != null && !list.isEmpty()) { %>
+        <% for (int i = 0; i < list.size(); i++) { %>
+        <tr>
+            <td class="tr_line">
+                <label>
+                    <input type="checkbox">
+                    <span><%= list.get(i).getTodoTitle() %></span>
+                </label>
+            </td>
+            <td width="40px" class="tr_line">
+                <img src="resources/img/todo_edit_img.png" alt="수정" id="icon_resize" class="btn">
+            </td>
+            <td width="40px" class="tr_line">
+                <img src="resources/img/todo_delete_img.png" alt="삭제" id="icon_resize" class="btn">
+            </td>
+        </tr>
+        <% } %>
+    <% } else { %>
+        <tr>
+            <td colspan="3" class="tr_line">등록된 할일이 없습니다.</td>
+        </tr>
+    <% } %>
+</table>
 			<!-- 할일 목록 하단 버튼 영역-->
 			<div class="pagination">
 				<!-- 왼쪽 하단: 페이지 정보 -->
@@ -94,7 +103,8 @@
 				</div>
 			</div>
 		</div>
-		      
+		
+        
 					<!-- 오른쪽 컨텐츠 -->
 					<div class="right-content">
 						<!-- 오늘의 추천할일 출력 -->
@@ -112,12 +122,12 @@
 					</div>
 				</div>
 
-		</div>
+		</div>  
 	</div>
     
     <!-- 할일 등록 모달창-->
 			<div id="modalContainer" class="modal">
-				<!-- 할일 등록 모달 내용 -->			
+				<!-- 할일 등록 모달 내용 -->
 				<div id="todo_post_modal" class="modal-content">
 				<form action="todo" method="post">
 					<table class="modal_table">
@@ -129,19 +139,18 @@
 						</tr>
 						<tr>
 							<td><input type="text" id="todo_content" name="todoTitle" placeholder="할일 내용"></td>
-						</tr>
+						</tr>						
 						<tr>
 							<td>
 								<div class="button-container">
 									<button id="cancel-button" class="close">취소</button>
-									<button id="submit-button" class="submit-button" type="submit">등록</button>
+									<button id="submit-button" class="submit-button">등록</button>
 								</div>
 							</td>
 						</tr>
-						</form>
 					</table>
-					</form>
-				</div>			
+				</form>
+				</div>
 				<!-- 할일 등록 모달 내용 끝 -->
 			</div>
             <!-- 할일 등록 모달창 끝-->
