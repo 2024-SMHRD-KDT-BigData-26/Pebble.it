@@ -77,4 +77,5 @@ public class MemberDAO {
 		this.sqlSession = sqlSession;
 	}
 
+	
 }

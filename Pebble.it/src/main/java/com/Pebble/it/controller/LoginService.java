@@ -38,7 +38,7 @@ public class LoginService extends HttpServlet {
 			session.setMaxInactiveInterval(60*60); // 세션 유지 시간 : 1시간
 			
 			// home.jsp로 리다이렉트
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("home_content.jsp");
 		} else {
 		    // 로그인 실패: index.jsp로 이동하며 오류 메시지 전달
 		    System.out.println("로그인 실패: 아이디 또는 비밀번호 불일치");
