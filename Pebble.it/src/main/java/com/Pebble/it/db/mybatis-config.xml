@@ -32,6 +32,7 @@
     <mapper resource="com/Pebble/it/db/MemberMapper.xml"/>
     <mapper resource="com/Pebble/it/db/CalendarMapper.xml"/>
     <mapper resource="com/Pebble/it/db/DiaryMapper.xml"/>
+    <mapper resource="com/Pebble/it/db/todoMapper.xml"/>
   </mappers>
   
 </configuration>
