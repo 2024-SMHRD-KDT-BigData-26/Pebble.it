@@ -16,7 +16,7 @@ public class MemberDAO {
 			int cnt = sqlSession.insert("com.Pebble.it.db.MemberMapper.join", dto); // 조인 쿼리 실행
 
 			if (cnt > 0) {
-				System.out.println("회원가입 성공: " + dto.getId());
+				System.out.println("회원가입 성공: " + dto.getUSER_ID());
 			} else {
 				System.out.println("회원가입 실패");
 			}
@@ -35,7 +35,7 @@ public class MemberDAO {
 			MemberDTO user = sqlSession.selectOne("com.Pebble.it.db.MemberMapper.login", new MemberDTO(id, pw));
 
 			if (user != null) {
-				System.out.println("로그인 성공: " + user.getName());
+				System.out.println("로그인 성공: " + user.getNICK());
 			} else {
 				System.out.println("로그인 실패: 아이디 또는 비밀번호 불일치");
 			}

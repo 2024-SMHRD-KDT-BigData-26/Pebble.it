@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css">
     <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
 
+    <!-- 모달 스타일 연결 -->
+    <link rel="stylesheet" href="resources/js/rank_modal_euna.js">
+
 </head>
 
 <body>
@@ -37,83 +40,77 @@
 
     <!-- 메인 콘텐츠 영역 -->
     <div class="main-content">
-        <!-- 콘텐츠 컨테이너 -->
-        <div class="content-container">
-            <!-- 왼쪽 콘텐츠 영역 -->
-            <div class="left-content">
-                <!-- 왼쪽 상단 콘텐츠 박스 -->
-                <div class="content-box">
-                    <div class="content-header">
-                        <h2 class="content-title">내 달성률</h2>
+        <!-- 왼쪽 콘텐츠 영역 -->
+        <div class="left-content">
+            <!-- 왼쪽 상단 콘텐츠 박스 -->
+            <div class="content-box">
+                <div class="content-header">
+                    <h2 class="content-title">내 달성률</h2>
+                </div>
+                <div class="content-body">
+                    <!-- 상단 입력 영역 -->
+                    <div class="top-section">
+                        <div class="sum_point-section">
+                            <p>누적 포인트</p>
+                            <h2>5,000P</h2>
+                        </div>
+                        <div class="today_point-section">
+                            <p>오늘 적립된 포인트 </p>
+                            <h2>1,000P</h2>
+                        </div>
                     </div>
-                    <div class="content-body">
-
-                        <!-- 상단 입력 영역 -->
-                        <div class="top-section">
-                            <div class="sum_point-section">
-                                <p>누적 포인트</p>
-                                <h2>5,000P</h2>
-                            </div>
-                            <div class="today_point-section">
-                                <p>오늘 적립된 포인트 </p>
-                                <h2>1,000P</h2>
-                            </div>
-                        </div>
-                        <!-- 하단 입력 -->
-                        <div class="bottom-section">
-                            <div class="my_figure_chart" id="bar-chart"></div>
-                            <script type="module" src="resources/js/rank_chart_euna.js"></script>
-                        </div>
-
-
-
+                    <!-- 하단 입력 -->
+                    <div class="bottom-section">
+                        <div class="my_figure_chart" id="bar-chart"></div>
+                        <script type="module" src="resources/js/rank_chart_euna.js"></script>
                     </div>
                 </div>
-                <!-- 왼쪽 하단 콘텐츠 박스 -->
-                <div class="content-box">
-                    <div class="content-header">
-                        <h2 class="content-title">내 뱃지</h2>
-                    </div>
-                    <div class="content-body">
-                        <div class="achievement-container">
-                            <!-- 1번 뱃지 -->
-                            <div class="achievement-item">
-                                <!-- 미획득 이미지 -->
-                                <img src="resources/img/badge_icons1-1.png" alt="미획득 일정" class="not-achieved">
-                                <!-- 획득 이미지 -->
-                                <img src="resources/img/badge_icons1.webp" alt="획득 일정" class="achieved">
-                                <span>일정 10개 등록</span>
-                            </div>
-                            <!-- 2번 뱃지 -->
-                            <div class="achievement-item">
-                                <img src="resources/img/badge_icons2-1.png" alt="미획득" class="not-achieved">
-                                <img src="resources/img/badge_icons2.webp" alt="획득" class="achieved">
-                                <span>할 일 10개 완료</span>
-                            </div>
-                            <!-- 3번 뱃지 -->
-                            <div class="achievement-item">
-                                <img src="resources/img/badge_icons3-1.png" alt="미획득" class="not-achieved">
-                                <img src="resources/img/badge_icons3.webp" alt="획득" class="achieved">
-                                <span>나의 기록 3일 이상 작성</span>
-                            </div>
-                            <!-- 4번 뱃지 -->
-                            <div class="achievement-item">
-                                <img src="resources/img/badge_icons4-1.png" alt="미획득" class="not-achieved">
-                                <img src="resources/img/badge_icons4.webp" alt="획득" class="achieved">
-                                <span>일일 포인트 20점 획득</span>
-                            </div>
-                            <!-- 5번 뱃지 -->
-                            <div class="achievement-item">
-                                <img src="resources/img/badge_icons5-1.png" alt="미획득" class="not-achieved">
-                                <img src="resources/img/badge_icons5.webp" alt="획득" class="achieved">
-                                <span>누적 포인트 100점 획득</span>
-                            </div>
-                            <!-- 6번 뱃지 -->
-                            <div class="achievement-item">
-                                <img src="resources/img/badge_icons6-1.png" alt="미획득" class="not-achieved">
-                                <img src="resources/img/badge_icons6.webp" alt="획득" class="achieved">
-                                <span>포인트 순위 1위 달성</span>
-                            </div>
+            </div>
+
+            <!-- 왼쪽 하단 콘텐츠 박스 -->
+            <div class="content-box">
+                <div class="content-header">
+                    <h2 class="content-title">내 뱃지</h2>
+                </div>
+                <div class="content-body">
+                    <div class="achievement-container">
+                        <!-- 1번 뱃지 -->
+                        <div class="achievement-item">
+                            <!-- 미획득 이미지 -->
+                            <img src="resources/img/badge_icons1-1.png" alt="미획득 일정" class="not-achieved">
+                            <!-- 획득 이미지 -->
+                            <img src="resources/img/badge_icons1.webp" alt="획득 일정" class="achieved">
+                            <span>일정 10개 등록</span>
+                        </div>
+                        <!-- 2번 뱃지 -->
+                        <div class="achievement-item">
+                            <img src="resources/img/badge_icons2-1.png" alt="미획득" class="not-achieved">
+                            <img src="resources/img/badge_icons2.webp" alt="획득" class="achieved">
+                            <span>할 일 10개 완료</span>
+                        </div>
+                        <!-- 3번 뱃지 -->
+                        <div class="achievement-item">
+                            <img src="resources/img/badge_icons3-1.png" alt="미획득" class="not-achieved">
+                            <img src="resources/img/badge_icons3.webp" alt="획득" class="achieved">
+                            <span>나의 기록 3일 이상 작성</span>
+                        </div>
+                        <!-- 4번 뱃지 -->
+                        <div class="achievement-item">
+                            <img src="resources/img/badge_icons4-1.png" alt="미획득" class="not-achieved">
+                            <img src="resources/img/badge_icons4.webp" alt="획득" class="achieved">
+                            <span>일일 포인트 20점 획득</span>
+                        </div>
+                        <!-- 5번 뱃지 -->
+                        <div class="achievement-item">
+                            <img src="resources/img/badge_icons5-1.png" alt="미획득" class="not-achieved">
+                            <img src="resources/img/badge_icons5.webp" alt="획득" class="achieved">
+                            <span>누적 포인트 100점 획득</span>
+                        </div>
+                        <!-- 6번 뱃지 -->
+                        <div class="achievement-item">
+                            <img src="resources/img/badge_icons6-1.png" alt="미획득" class="not-achieved">
+                            <img src="resources/img/badge_icons6.webp" alt="획득" class="achieved">
+                            <span>포인트 순위 1위 달성</span>
                         </div>
                     </div>
                 </div>
@@ -126,66 +123,99 @@
             <div class="content-box">
                 <div class="content-header">
                     <h2 class="content-title">포인트 순위</h2>
-                    <img class="info-icon" src="resources/img/impormation.png" alt="정보 아이콘" />
+                    <img class="btn" src="resources/img/impormation.png" alt="정보 아이콘" />
                 </div>
                 <div class="content-body">
                     <table class="ranking-table">
 
-                   
-                    
-                        <tr >
+
+
+                        <tr>
                             <td>1위</td>
-                            <td>사용자 A</td>
-                            <td >10,000P</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 1
+                            </td>
+                            <td>10,000P</td>
                         </tr>
                         <tr>
                             <td>2위</td>
-                            <td>사용자 B</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 2
+                            </td>
                             <td>9,500P</td>
                         </tr>
                         <tr>
                             <td>3위</td>
-                            <td>사용자 C</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 3
+                            </td>
                             <td>9,000P</td>
                         </tr>
                         <tr>
                             <td>4위</td>
-                            <td>사용자 D</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 4
+                            </td>
                             <td>8,500P</td>
                         </tr>
                         <tr>
                             <td>5위</td>
-                            <td>사용자 E</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 5
+                            </td>
                             <td>8,000P</td>
                         </tr>
                         <tr>
                             <td>6위</td>
-                            <td>사용자 F</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 6
+                            </td>
                             <td>7,500P</td>
                         </tr>
                         <tr>
                             <td>7위</td>
-                            <td>사용자 G</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 7
+                            </td>
                             <td>7,000P</td>
                         </tr>
                         <tr>
                             <td>8위</td>
-                            <td>사용자 H</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 8
+                            </td>
                             <td>6,500P</td>
                         </tr>
                         <tr>
                             <td>9위</td>
-                            <td>사용자 I</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 9
+                            </td>
                             <td>6,000P</td>
                         </tr>
                         <tr>
                             <td>10위</td>
-                            <td>사용자 J</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 10
+                            </td>
                             <td>5,500P</td>
                         </tr>
                         <tr>
                             <td>11위</td>
-                            <td>사용자 K</td>
+                            <td>
+                                <img src="resources/img/test_profile.jfif" alt="사용자 프로필 이미지">
+                                사용자 11
+                            </td>
                             <td>5,000P</td>
                         </tr>
                     </table>
@@ -195,6 +225,55 @@
     </div>
     </div>
     </div>
+    <!-- 모달 -->
+    <div div id="modal" class="modal">
+        <div class="modal-section">
+            <!-- 모달 헤더 -->
+            <div class="modal-header">
+                <h2 class="modal-title">포인트 순위 정보</h2>
+                <button class="close-btn" id="closeModal">✖</button>
+            </div>
+            <!-- 모달 설명 -->
+            <div class="modal-text">
+                포인트 순위는 전체 포인트의 누적된 순위입니다.<br>
+                같은 포인트를 획득한 경우, <br>
+                먼저 해당 포인트를 달성한 회원이 더 높은 순위를 받습니다.
+            </div>
+            <!-- 모달 테이블 -->
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>점수 획득 방법</th>
+                        <th>1회 획득 점수</th>
+                        <th>1일 최대 획득량</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>플랫폼 접속</td>
+                        <td>10점</td>
+                        <td>10점</td>
+                    </tr>
+                    <tr>
+                        <td>일정 등록</td>
+                        <td>3점</td>
+                        <td>15점</td>
+                    </tr>
+                    <tr>
+                        <td>할일 완료 체크</td>
+                        <td>5점</td>
+                        <td>25점</td>
+                    </tr>
+                    <tr>
+                        <td>기록 등록</td>
+                        <td>3점</td>
+                        <td>15점</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- 정보 모달창 끝-->
+    <script src="resources/js/rank_modal_euna.js"></script>
 </body>
 
 </html>

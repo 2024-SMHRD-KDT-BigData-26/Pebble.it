@@ -16,6 +16,7 @@ body {
     margin: 0;
     display: flex;
     height: 100vh; /* 전체 화면 높이 */
+    background-color: #F5F5F5;
 }
 
 /* 사이드바 */
@@ -31,11 +32,13 @@ body {
 .main-content {
     margin-left: 250px;
     flex: 1; /* 남은 공간을 차지 */
-    padding: 20px;
+    padding: 30px;
     display: flex;
     gap: 20px; /* 좌우 간격 */
     box-sizing: border-box;
     overflow: hidden; /* 스크롤 방지 */
+    background-color: transparent; /* 배경 투명화 */
+    
 }
 
 /* 콘텐츠 컨테이너 */
@@ -44,19 +47,49 @@ body {
     gap: 20px; /* 좌우 콘텐츠 간 간격 */
     justify-content: space-between; /* 좌우 간격 유지 */
     align-items: stretch; /* 상하 콘텐츠의 높이를 동일하게 맞춤 */
+    
 }
 /* 콘텐츠 컨테이너 */
 .left-content,
 .right-content {
-    flex: 1; /* 동일한 비율 */
-    background-color: white;
-    border: 1px solid #ddd;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    
+    
+
+}
+/* 왼쪽 상단과 하단 콘텐츠 간 간격 추가 */
+.left-content {
+    flex: 1;
+    justify-content: space-between;
+    gap: 20px; /* 상단과 하단 콘텐츠 간 간격을 30px로 설정 */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    background-color: transparent; /* 배경 투명화 */
+    
+}
+/* content-box 스타일 */
+.content-box {
+    background-color: transparent; /* 배경 투명화 */
+    border-radius: 0; /* 모서리를 둥글게 하지 않음 */
+    box-shadow: none; /* 그림자 제거 */
+    display: flex; /* 내부 정렬을 위한 플렉스 컨테이너 */
+    flex-direction: column; /* 세로 정렬 */
 }
 
+.right-content {
+    flex: 1;
+    justify-content: space-between;
+    gap: 20px; /* 상단과 하단 콘텐츠 간 간격을 30px로 설정 */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: white;
+    background-color: transparent; /* 배경 투명화 */
+}
 
 
 /* 콘텐츠 박스 공통 스타일 */
@@ -67,6 +100,7 @@ body {
     display: flex; /* 상단바와 내용 영역 배치 */
     flex-direction: column; /* 세로 방향 정렬 */
     flex-grow: 1;
+    
 }
 
 /* 콘텐츠 상단바 */
@@ -82,7 +116,7 @@ body {
 }
 
 /* 정보 아이콘 스타일 */
-.info-icon {
+.btn {
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -160,6 +194,8 @@ body {
     padding: 10px 20px; /* 내부 여백 */
     height: 70px; 
     width: 90%;
+    background-color: white;
+  
 }
 
 /* 누적 포인트와 오늘 적립된 포인트 글씨 */
@@ -185,6 +221,13 @@ body {
     border-radius: 8px; /* 모서리 둥글게 */
     width: 100%;
     height: 70px;
+    background-color: white;
+}
+
+#bar-chart {
+    width: auto; /* 기본적으로 차트가 부모에 맞게 조정 */
+    max-width: 100%; /* 최대 너비를 부모의 100%로 제한 */
+    text-align: center; /* 텍스트 정렬 (필요한 경우) */
 }
 
 /* bottom-section 내 차트 크기 조정 */
@@ -193,11 +236,7 @@ body {
     width: 100%; /* 너비 전체 사용 */
 }
 
-/* Toast UI 차트 컨테이너 */
-.my_figure_chart {
-    width: 100%; /* 부모 너비의 90% */
-    height: 80%; /* 부모 높이의 90% */
-}
+
 
 /* 테이블 스타일 */
 .ranking-table {
@@ -208,3 +247,141 @@ body {
     text-align: left; /* 텍스트 왼쪽 정렬 */
     font-size: 16px; /* 글씨 크기 */
 }
+
+.ranking-table tr:not(:last-child) {
+    border-bottom: 1px solid #EAEDF2;
+}
+
+.ranking-table td {
+    padding: 10px;
+    vertical-align: middle; /* 텍스트와 이미지 가운데 정렬 */
+
+}
+
+.ranking-table td:nth-child(1) {
+    text-align: center; /* 순위는 중앙 정렬 */
+    font-weight: bold; /* 순위 텍스트 강조 */
+}
+
+.ranking-table td:nth-child(2) {
+    display: flex; /* 이미지와 텍스트를 가로 배치 */
+    align-items: center; /* 텍스트와 이미지 수직 정렬 */
+    gap: 10px; /* 이미지와 텍스트 간격 */
+}
+
+/* 세 번째 열 오른쪽 정렬 */
+.ranking-table td:nth-child(3) {
+    text-align: right; /* 오른쪽 정렬 */
+}
+/* 순위 옆에 원형 이미지 추가 스타일 */
+.ranking-table td img {
+    width: 40px; /* 이미지 크기 */
+    height: 40px; /* 이미지 크기 */
+    border-radius: 50%; /* 원형으로 설정 */
+    object-fit: cover; /* 비율 유지 */
+    vertical-align: middle; /* 텍스트와 이미지의 수직 정렬 */
+}
+/* 모달 배경 */
+.modal {
+    display: none; /* 기본으로 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 창 기본틀*/
+.modal-section {
+   position: relative;
+   background-color: #ffffff;
+   width: 500px;
+   height: 370px;
+   max-height: 80%; /* 화면 높이의 80% */
+   z-index: 1001;
+   margin: 15% auto; /* 15% from the top and centered */
+   border: 1px solid #888;
+   border-radius: 8px;
+   padding: 10px;
+
+}
+
+/* 모달 헤더 */
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* 제목과 닫기 버튼 좌우 배치 */
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
+}
+/* 제목 */
+.modal-title {
+    margin: 0;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+}
+
+/* 닫기 버튼 */
+.close-btn {
+    background: none; /* 배경 제거 */
+    border: none; /* 테두리 제거 */
+    font-size: 18px; /* 버튼 크기 */
+    cursor: pointer; /* 커서 스타일 변경  */
+}
+
+
+/* 설명 */
+.modal-text {
+    margin-bottom: 15px;
+    margin-left: 20px;
+    font-size: 16px
+}
+
+/* 테이블 */
+.modal-table {
+    width: 90%; /* 테이블 전체 너비를 90%로 축소 */
+    margin: 0 auto; /* 테이블 가운데 정렬 */
+    font-size: 14px; /* 폰트 크기 축소 */
+    text-align: left; /* 텍스트 중앙 정력 */
+    font-size: 14px;
+    margin-top: 20px;
+    border: 1px solid #ddd; /* 전체 테이블 테두리 */
+    border-collapse: collapse;
+  
+}
+
+.modal-table thead th {
+    padding: 10px;
+    line-height: 1.5; /* 줄 간격 */
+    font-size: 16px; /* 폰트 크기  */
+    background: #f5f5f5; /* 배경색 */
+   
+}
+
+.modal-table tbody td {
+    padding: 5px;
+    line-height: 1.8;
+    
+}
+
+/* 테이블 헤버와 셀 */
+.modal-table th,
+.modal-table td  {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    margin-left: 10px;
+}
+
+/* 마지막 행의 td 테두리 제거 */
+.modal-table tbody tr:last-child td {
+    border-bottom: none; /* 마지막 행 아래쪽 테두리 제거 */
+}
+
+

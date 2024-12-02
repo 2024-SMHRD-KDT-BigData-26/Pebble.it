@@ -31,14 +31,14 @@ public class LoginService extends HttpServlet {
 		MemberDTO user = dao.login(id, pw);
 	
 		if (user != null) {
-			System.out.println("로그인 성공: " + user.getId());
+			System.out.println("로그인 성공: " + user.getUSER_ID());
 			// 로그인 성공시 세션 생성 및 홈페이지로 리다이렉트
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", user);
 			session.setMaxInactiveInterval(60*60); // 세션 유지 시간 : 1시간
 			
 			// home.jsp로 리다이렉트
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("home_content.jsp");
 		} else {
 		    // 로그인 실패: index.jsp로 이동하며 오류 메시지 전달
 		    System.out.println("로그인 실패: 아이디 또는 비밀번호 불일치");

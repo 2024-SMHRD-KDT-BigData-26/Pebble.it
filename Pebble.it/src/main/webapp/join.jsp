@@ -42,7 +42,7 @@
 
 			<!-- 닉네임 입력 -->
 			<div class="Join">
-				<input type="text" name="name" id="nickname"
+				<input type="text" name="name" id="nickname" maxlength="8"
 					placeholder="닉네임을 입력하세요 (1~8자 영문, 한글, 숫자)" required>
 				<button type="button" id="check-nick" class="check-btn">중복확인</button>
 				<small id="nick-error" class="error-message"></small>
@@ -50,7 +50,7 @@
 
 			<!-- 아이디 입력 -->
 			<div class="Join">
-				<input type="text" name="id" id="userId"
+				<input type="text" name="id" id="userId" maxlength="10"
 					placeholder="아이디를 입력하세요 (5~10자의 영문 소문자, 숫자)" required>
 				<button type="button" id="check-id" class="check-btn">중복확인</button>
 				<small id="id-error" class="error-message"></small>
@@ -58,7 +58,7 @@
 
 			<!-- 비밀번호 입력 -->
 			<div class="Join">
-				<input type="password" name="pw" id="password"
+				<input type="password" name="pw" id="password" maxlength="16"
 					placeholder="비밀번호를 입력하세요 (8~16자의 영문 대/소문자, 숫자)" required
 					pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$"
 					title="비밀번호는 8~16자 사이의 영문(대/소문자)과 숫자를 포함해야 합니다."> <small
