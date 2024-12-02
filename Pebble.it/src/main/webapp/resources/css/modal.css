@@ -1,0 +1,267 @@
+/* 모달 전체 기본틀 */
+.modal {
+    display: none; /* 기본적으로 숨김 처리 */
+    position: fixed; /* 화면에서 스크롤해도 위치 고정 */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 설정 */
+    left: 0; /* 화면 왼쪽부터 시작 */
+    top: 0; /* 화면 위쪽부터 시작 */
+    width: 100%; /* 화면 전체 너비 */
+    height: 100%; /* 화면 전체 높이 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 활성화 */
+    background-color: rgba(0, 0, 0, 0.5); /* 배경색 투명도 추가 (검정, 투명도 50%) */
+    justify-content: center; /* 중앙에 표시되도록 설정 */
+    align-items: center; /* 중앙에 표시되도록 설정 */
+    color: #000;
+  }
+  
+  /* 모달 창 기본틀 */
+  .modal-content {
+    position: relative;
+    background-color: #ffffff;
+    width: 400px;
+    height: 120px;
+    padding: 10px;
+    z-index: 1001; /* 모달 콘텐츠가 모달 배경 위에 표시되도록 설정 */
+    border-radius: 5px;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+  }
+  
+  #modalContainer.hidden {
+    display: none;
+  }
+  
+  #modalCloseButton {
+    float: right;
+    background-color:#fff;
+      color: #000;
+      border:none;
+  }
+  
+  .modal_table {
+    width: 400px;
+    height: 120px;
+    /*border : 1px solid black;*/
+    border-collapse : collapse;
+  }
+  
+  .tr_line {
+      border-bottom: 1px solid #EAEDF2;/* 행의 하단에 실선 추가 */
+  }
+  
+  #todo_content {
+    width: 400px; /* 너비 설정 */
+    color: #D3D3D3; /* 텍스트 색상 설정 */
+    margin-top: 5px; /* 위쪽 간격 설정 */
+    padding: 5px; /* 입력 필드 내부 여백 추가 */
+    border: 1px solid #969696; /* 테두리 설정 */
+    border-radius: 4px; /* 둥근 모서리 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+    border-collapse: separate;
+  }
+  
+  .modal-button {
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center; /* 버튼 수평 중앙 정렬 */
+    gap: 5px;
+  }
+  
+  #cancel-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D3D3D3;
+    color: #838F9B;
+    border: none;
+  }
+  
+  #submit-button, #join-btn {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #DE9631;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  #edit-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #DE9631;
+    color: white;
+    border: none;
+  }
+
+  #delete-button {
+    width:70px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #D64949;
+    color: white;
+    border: none;
+  }
+
+  #delete_msg {
+    padding-top: 10px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+/* 내정보 변경 모달 */
+.modal-content_config {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+  height: 560px;
+  padding: 10px;
+  z-index: 1001; /* 모달 콘텐츠가 모달 배경 위에 표시되도록 설정 */
+  border-radius: 5px;
+  margin: 9% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+}
+
+/* 회원탈퇴 버튼 */
+#resign {
+  display: inline-block; /* 인라인 요소를 블록처럼 취급 */
+  align-items: center; /* 세로 중앙 정렬 */
+  background-color: #D3D3D3; /* 라벨 배경색 */
+  color: #888; /* 텍스트 색상 */
+  padding: 2px; /* 내부 여백 */
+  border-radius: 4px; /* 둥근 모서리 */
+  font-size: 10px; /* 텍스트 크기 */
+  margin-left: 5px; /* 텍스트와 라벨 간 간격 */
+  margin-bottom: 5px;
+  border : none;
+}
+
+/* 프로필 사진 업로드 */
+.profile_img {
+  margin: 20px auto 5px auto; /* 가운데 정렬 및 아래 여백 추가 */
+  width: 100px; /* 원의 가로 크기 */
+  height: 100px; /* 원의 세로 크기 */
+  background-color: #888; /* 배경색 */
+  border-radius: 50%; /* 둥글게 만들어 원으로 설정 */
+  display: flex; /* 안의 내용 정렬을 위한 Flexbox 사용 */
+  justify-content: center; /* 가로 정렬 */
+  align-items: center; /* 세로 정렬 */
+  font-size: 0.8rem; /* 텍스트 크기 */
+  color: white; /* 텍스트 색상 */
+  cursor: pointer; /* 커서를 버튼 형태로 */
+}
+
+/* 프로필 사진 업로드 */
+.profile_img img {
+  display: block; /* 이미지를 블록 요소로 설정 */
+  width: 100%; /* 프로필 이미지 영역의 100% 채우기 */
+  height: 100%; /* 프로필 이미지 영역의 100% 채우기 */
+  border-radius: 50%; /* 이미지를 원형으로 자르기 */
+  object-fit: cover; /* 비율 유지하며 영역에 맞게 자르기 */
+  transition: 0.3s ease-in-out; /* 부드러운 전환 효과 추가 */
+}
+
+/* 파일 업로드 버튼을 이미지 아래로 숨기되 클릭 가능하도록 설정 */
+.profile_img input[type="file"] {
+  position: absolute; /* 이미지 위에 겹치도록 설정 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 부모 요소의 전체 크기 차지 */
+  height: 100%;
+  opacity: 0; /* 버튼을 투명하게 */
+  cursor: pointer; /* 클릭 가능한 커서 유지 */
+  z-index: 10; /* 이미지보다 높은 z-index 설정 */
+}
+
+/* 닉네임 */
+.my_id {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Join 클래스: 입력 영역 */
+.Join {
+  margin: 10px auto; /* 위아래 여백 및 가운데 정렬 */
+  display: flex; /* 닉네임과 버튼을 나란히 배치 */
+  justify-content: center; /* 가로 정렬 */
+  align-items: center; /* 세로 정렬 */
+  gap: 10px; /* 입력창과 버튼 간 간격 */
+}
+
+#nickname {
+  padding: 10px; /* 내부 여백 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  border: 1px solid #ccc; /* 입력창 테두리 */
+  font-size: 0.9rem; /* 텍스트 크기 */
+  width: 290px;
+}
+
+/* 중복확인 버튼 */
+.check-btn {
+  height: 40px;
+  width: 65px;
+  font-size: 0.8rem; /* 글씨 크기 */
+  color: white; /* 텍스트 색상 */
+  background-color: #85BEDD; /* 배경색 */
+  border: none; /* 테두리 제거 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  cursor: pointer; /* 버튼 커서 */
+}
+
+/* 패스워드창 크기 */
+.password {
+  padding: 10px; /* 내부 여백 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  border: 1px solid #ccc; /* 입력창 테두리 */
+  font-size: 0.9rem; /* 텍스트 크기 */
+  width: 369px;
+}
+
+/* 운동 관련 영역 */
+.sport_text {
+  margin: 5px;
+  padding: 5px;
+}
+
+.buttens{
+  margin-top: 15px;
+}
+
+   /* 라디오 버튼 스타일 */
+   input[type="radio"] {
+    appearance: none; /* 기본 브라우저 스타일 제거 */
+    width: 20px;
+    height: 20px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* 선택된 상태 스타일 */
+input[type="radio"]:checked {
+    background-color: #DE9631;
+    border-color: gray;
+}
+
+#message{
+  color: #D64949;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/* 회원 탈퇴 모달 */
+#user_delete_modal {
+  color: #D64949;
+  height: 130px;
+}

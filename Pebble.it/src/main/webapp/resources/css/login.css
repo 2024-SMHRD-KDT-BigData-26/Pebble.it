@@ -1,0 +1,156 @@
+/* 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 요소에 폰트 적용 */
+* {
+    font-family: 'GmarketSansMedium', sans-serif;
+}
+
+
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 컨테이너 */
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* 왼쪽 섹션 */
+.left_section {
+    position: relative;
+    width: 50%;
+    height: 100vh; /* 높이 설정 */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s; /* 부드러운 전환 효과 */
+}
+
+.left_text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정중앙으로 이동 */
+    color: white; /* 텍스트 색상 */
+    font-size: 36px; /* 텍스트 크기 */
+}
+
+.overlay {
+    position: relative; /* 부모 기준 위치 */
+    width: 100%;
+    height: 100vh;
+}
+
+/* 우측 섹션 */
+.right-section {
+    flex: 1;
+    background-color: #394450;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.right-section h2 {
+    font-size: 18px;
+    color: #FFFF;
+    margin-bottom: 10px;
+}
+
+.right-section h2 .dot {
+    color: #DE9631;
+}
+
+#pebble {
+ width: 20px;
+ height: 20px;
+}
+
+#pebble_it_big_logo {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+}
+
+/* 상단 타이틀 텍스트 */
+#top_title {
+    width: 300px;
+    display: inline-flex; /* Flexbox 활성화 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 10px; /* 이미지와 텍스트 간격 */
+    font-size: 16px;
+}
+
+.logo {
+    font-size: 50px;
+    color: #85BEDD;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 300px;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #d3d3d3;
+}
+
+form button {
+    background-color: #DE9631;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #FF9F2D;
+}
+
+/* 링크 스타일 수정 */
+form p a {
+    color: white; /* 흰색 텍스트 */
+    text-decoration: none; /* 밑줄 제거 */
+    transition: color 0.3s; /* 색 전환 효과 */
+}
+
+form p a:hover {
+    color: #DE9631; /* 오렌지색으로 변경 */
+}
+
+form p {
+    text-align: center;
+    margin-top: 10px;
+}
