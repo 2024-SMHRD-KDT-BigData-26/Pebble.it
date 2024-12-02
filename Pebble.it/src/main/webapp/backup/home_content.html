@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pebble.it</title>
+
+    <!-- jQuery 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- 사이드바 스타일 시트 -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css" />
+    <!-- 캘린더와 메인 레이아웃 관련 스타일 -->
+    <link rel="stylesheet" href="resources/css/we_calender.css" />
+    <!-- 홈 컨텐츠 관련 CSS -->
+    <link rel="stylesheet" href="resources/css/home_content.css" />
+
+    <!-- 차트 관련 CSS, JS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css">
+    <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+
+
+  </head>
+
+  <body>
+      <!-- 사이드바 로드 -->
+      <div class="sidebar">
+        <script>
+          $(document).ready(function () {
+              $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                  if (status == "error") {
+                      // 만약 Sidebar.html이 로드되지 않으면 /Pebble.it/Sidebar.html으로 대체 시도
+                      $(".sidebar").load("/Pebble.it/Sidebar.html");
+                  }
+              });
+          });
+      </script>
+      </div>
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="home-content">
+        <div class="container_left">
+          <!-- 오늘 날짜 출력 -->
+          <div class="today"><strong>2024.11.28(목)</strong></div>
+
+          <!-- 오늘의 달성도 차트 출력 -->
+          <div class="today_figure_title">오늘의 달성도</div>
+          <div class="today_figure_chart" id="today_figure_chart"></div>
+          <script type="module" src="resources/js/todat_figure_chart.js"></script>
+
+          <!-- 주간 할일 달성도 차트 출력 -->
+          <div class="weekly_todo_figure_title">주간 할일 달성도</div>
+          <div class="weekly_todo_figure_chart" id="weekly_todo_figure_chart"></div>
+          <script type="module" src="resources/js/weekly_todo_figure_chart.js"></script>
+        </div>
+        <div class="container_right">
+          <div class="list_set">
+          <!-- 일정 목록 출력-->
+          <div class="calender_list">
+            <div class="calender_title">일정</div>
+            <div class="calender_content">
+              <table>
+                <!-- 일정 최대 3개만 출력 -->
+                <!-- 일정 내용 1번 -->
+                <tr>
+                  <td id="calender_content_date">
+                    <img src="resources/img/calender_clock.png" alt="일정" id="calender_clock">
+                    &nbsp;2024.12.31(목) 14:00 - 15:00
+                  </td>
+                </tr>
+                <tr>
+                  <td id="calender_content_title">수영 첫 수업!!</td>
+                </tr>
+                <tr>
+                  <td id="calender_content_content">진원이랑 만나서 같이 가기로 함</td>
+                </tr>
+                <!-- 일정 내용 2번 -->
+                <tr>
+                  <td id="calender_content_date">
+                    <img src="resources/img/calender_clock.png" alt="일정" id="calender_clock">
+                    &nbsp;2024.12.31(목)
+                  </td>
+                </tr>
+                <tr>
+                  <td id="calender_content_title">수영 첫 수업!!</td>
+                </tr>
+                <tr>
+                  <td id="calender_content_content">진원이랑 만나서 같이 가기로 함</td>
+                </tr>
+                <!-- 일정 내용 3번 -->
+                <tr>
+                  <td id="calender_content_date">
+                    <img src="resources/img/calender_clock.png" alt="일정" id="calender_clock">
+                    &nbsp;2024.12.31(목) 14:00 - 15:00
+                  </td>
+                </tr>
+                <tr>
+                  <td id="calender_content_title">수영 첫 수업!!</td>
+                </tr>
+                <tr>
+                  <td id="calender_content_content">진원이랑 만나서 같이 가기로 함</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- 할일 목록 출력 -->
+          <div class="todo_list">
+            <div class="todo_title">할일</div>
+            <div class="todo_content">
+              <table>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+                <tr>
+                  <td><label><input type="checkbox"><span>할일 내용</span></label></td>
+                </tr>
+              </table>
+              <script src="resources/js/todo_check.js"></script>
+            </div>
+          </div>
+          </div>
+          <!-- 오늘의 운동정보 출력 -->
+          <div class="sport_recomment_title">
+            오늘의 운동정보
+          </div>
+          <div id="AIoutput" class="scroll-content">
+            <div class="sport_recomment_content">
+              <button id="generateBtn">운동 정보 생성하기</button>
+            </div>
+          </div>
+          <script type="module" src="resources/js/AI_sport_info.js"></script>
+        </div>
+        </div>
+  </body>
+</html>
