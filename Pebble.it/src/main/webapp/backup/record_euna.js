@@ -12,10 +12,3 @@ $(document).ready(function () {
             // 삭제 후 동작 추가
         }
     });
-
-    // 목록으로 버튼 클릭 이벤트
-    $('#back-btn').click(function () {
-        alert('목록으로 이동합니다.');
-        // 이동 로직 추가
-    });
-});

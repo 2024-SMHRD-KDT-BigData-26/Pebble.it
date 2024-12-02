@@ -11,7 +11,7 @@ body {
     margin: 0;
     display: flex;
     height: 100vh;
-    font-family: Arial, sans-serif;
+    font-family: GmarketSansMedium, Arial, sans-serif;
 }
 
 /* 사이드바 */
@@ -30,14 +30,12 @@ body {
     padding: 20px;
     box-sizing: border-box;
     width: calc(100% - 250px); /* 사이드바를 제외한 나머지 공간 */
-    height: 100vh;
     display: flex;
     overflow-y: hidden;
     display: flex; /* 중앙 정렬을 위한 플렉스 박스 */
     flex-direction: column; /* 세로 정렬 */
     align-items: center; /* 가로 중앙 정렬 */
-    justify-content: flex-start; /* 위쪽 정렬 */
-   
+    justify-content: flex-start; /* 위쪽 정렬 */ 
 }
 
 .title-input-container,
@@ -83,6 +81,7 @@ font-family: 'GmarketSansMedium', sans-serif;
     height: 100%;     /* 실제 입력 영역 고정 */
     overflow: hidden;  /* 입력 영역에서 스크롤 제거 */
     resize: none;
+    background-color: white;
 }
 /* 버튼 컨테이너 */
 .button-container {
@@ -103,13 +102,28 @@ font-family: 'GmarketSansMedium', sans-serif;
 
 /* 취소 버튼 스타일 */
 .cancel-btn {
-    background-color: #f5f5f5; /* 배경색 */
-    color: #333; /* 텍스트 색상 */
-    border: 1px solid #ccc; /* 테두리 */
+    width:80px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D3D3D3;
+    color: #838F9B;
+    border: none;
 }
 
 /* 등록 버튼 스타일 */
 .submit-btn {
-    background-color:#DE9631; /* 배경색 */
-    color: white; /* 텍스트 색상 */
+    width:80px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #DE9631;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* 등록, 수정 상단 타이틀 스타일 */
+.post_title, .edit_title {
+    text-align: left;
+    font-size: 24px;
 }

@@ -70,6 +70,7 @@
   .button-container {
     display: flex;
     justify-content: center; /* 버튼 수평 중앙 정렬 */
+    gap: 5px;
   }
   
   #cancel-button {
@@ -130,7 +131,7 @@
 }
 
 /* 회원탈퇴 버튼 */
-.resign {
+#resign {
   display: inline-block; /* 인라인 요소를 블록처럼 취급 */
   align-items: center; /* 세로 중앙 정렬 */
   background-color: #D3D3D3; /* 라벨 배경색 */
@@ -140,6 +141,7 @@
   font-size: 10px; /* 텍스트 크기 */
   margin-left: 5px; /* 텍스트와 라벨 간 간격 */
   margin-bottom: 5px;
+  border : none;
 }
 
 /* 프로필 사진 업로드 */
@@ -257,4 +259,9 @@ input[type="radio"]:checked {
   margin-top: 5px;
   margin-left: 10px;
 }
-  
+
+/* 회원 탈퇴 모달 */
+#user_delete_modal {
+  color: #D64949;
+  height: 130px;
+}

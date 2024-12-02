@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pebble.it</title>
+
+    <!-- CSS 연결 -->
+    <!-- 사이드바 스타일 -->
+    <link rel="stylesheet" href="resources/css/Sidebar.css">
+    <!-- 메인 콘텐츠 스타일 -->
+    <link rel="stylesheet" href="resources/css/diary_detail.css">
+    <!-- 모달 스타일 연결 -->
+	<link rel="stylesheet" href="resources/css/modal.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+        <!-- 사이드바 -->
+        <div class="sidebar">
+            <script>
+                $(document).ready(function () {
+                    $(".sidebar").load("Sidebar.html", function(response, status, xhr) {
+                        if (status == "error") {
+                            // 만약 Sidebar.html이 로드되지 않으면 Sidebar.htm으로 대체 시도
+                            $(".sidebar").load("/Pebble.it/Sidebar.html");
+                        }
+                    });
+                });
+            </script>
+        </div>
+
+    <!-- 메인 콘텐츠 --> 
+    <div class="main-content">
+        <!-- content-box -->
+        <div class="content-box">
+            <!-- 1번째 줄: diary_category_label + 수정, 삭제 버튼 -->
+            <div class="outer-container">
+            <div class="content-header">
+                <div class="header_date">
+                    <span class="diary_category_label_02_sport">운동정보</span>
+                    <span class="diary_category_label_03_recomment">추천할일</span>
+                    <span class="diary_category_label_01_diary">나의기록</span>
+                    2024.12.31(목)
+                </div>
+                <!-- 제목 영역 (2번째 줄) -->
+                <div class="header_title">
+                오늘의 운동정보
+                </div>
+            </div>            
+            <div class="button-group">
+                <div class="button-center">
+                    <a href="diary_edit.html"><button id="modify-btn" class="action-btn modify-btn">수정</button></a>
+                    <button id="delete-btn" class="btn">삭제</button>
+                </div>
+            </div>
+        </div>
+            
+
+            <!-- 3번째 줄: 본문 내용 -->
+            <div class="content-body" aria-placeholder="여기에 내용이 들어갑니다.">
+                내용 
+            </div>
+
+            <!-- 4번째 줄: 목록으로 버튼 -->
+            <div class="content-footer">
+                <button id="back-btn" class="action-btn back-btn" onclick="history.back()">목록으로</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 기록 삭제 모달창-->
+			<div id="modalContainer" class="modal">
+				<!-- 기록 삭제 모달 내용 -->
+				<div id="diary_delete_modal" class="modal-content">
+					<table class="modal_table">
+                        <tr class="tr_line">
+                            <td>할일 삭제
+                                <!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
+                                <!-- <button id="modalCloseButton" class="close">X</button> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="delete_msg">할일을 삭제하시겠습니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="button-container">
+                                    <button id="cancel-button" class="close">취소</button>
+                                    <button id="delete-button" class="submit-button">삭제</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+				</div>
+				<!-- 기록 삭제 모달 내용 끝 -->
+			</div>
+            <!-- 기록 삭제 모달창 끝-->
+
+    <!-- JavaScript 파일 연결 -->
+	<script src="resources/js/modal.js"></script>
+</body>
+
+</html>
