@@ -64,7 +64,8 @@
 					<img src="resources/img/diary_menu_img.png">&nbsp;&nbsp;기록
 				</div></a> <a href="rank_euna.html"><div id="menu_name">
 					<img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지
-				</div></a> <div id="logout_menu">
+				</div></a> 
+				<div id="logout_menu">
 					<a href="Logout"><img src="resources/img/logout_img.png">&nbsp;&nbsp;로그아웃</a>
 				</div>
 		</nav>
