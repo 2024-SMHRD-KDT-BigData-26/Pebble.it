@@ -9,7 +9,7 @@ var funcs = [];
 // 모든 모달을 닫는 함수
 function closeAllModals() {
   for (var i = 0; i < modals.length; i++) {
-    modals[i].style.display = "none";
+    modal.style.display = "none";
   }
 }
 

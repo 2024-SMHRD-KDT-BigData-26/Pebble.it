@@ -9,7 +9,7 @@ const data = {
     ],
 };
 const options = {
-    chart: { width: 475, height: 220 },
+    chart: { width: 650, height: 210 },
     series: {
         stack: {
             type: 'normal',
