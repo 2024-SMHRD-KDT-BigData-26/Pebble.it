@@ -133,13 +133,13 @@ public class JoinService extends HttpServlet {
             }
 
             MemberDTO dto = new MemberDTO();
-            dto.setId(id);
-            dto.setPw(pw);
-            dto.setName(name);
-            dto.setProfileImg(fileName);
-            dto.setFavoriteSport(favoriteSport);
-            dto.setSportLevel(sportLevel);
-            dto.setUidLevel("USER");
+            dto.setUSER_ID(id);
+            dto.setPW(pw);
+            dto.setNICK(name);
+            dto.setPROFILE_IMG(fileName);
+            dto.setFAVORITE_SPORT(favoriteSport);
+            dto.setSPORT_LEVEL(sportLevel);
+            dto.setUID_LEVEL("USER");
 
             int result = dao.join(dto);
 
