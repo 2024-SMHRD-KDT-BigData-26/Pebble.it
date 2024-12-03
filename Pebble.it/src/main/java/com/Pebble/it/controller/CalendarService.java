@@ -1,11 +1,7 @@
 package com.Pebble.it.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,42 +13,40 @@ import com.Pebble.it.model.CalendarDTO;
 
 @WebServlet("/Calendar")
 public class CalendarService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// 한글 인코딩 처리
-		request.setCharacterEncoding("UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
-        // 클라이언트에서 받은 파라미터 읽기
-        String title = request.getParameter("title");
-        String date = request.getParameter("datetime");
-        String memo = request.getParameter("memo");
+        // 사용자 입력 데이터 받아오기
+        String userId = request.getParameter("USER_ID");
+        String title = request.getParameter("CAL_TITLE");
+        String content = request.getParameter("CAL_CONTENT");
+        String startDate = request.getParameter("CAL_ST_DT");
+        String endDate = request.getParameter("CAL_ED_DT");
+        String color = request.getParameter("CAL_COLOR");
 
-        // 입력값 검증 (필요한 경우)
-        if (title == null || title.isEmpty() || date == null || date.isEmpty()) {
-            response.sendRedirect("error.jsp");
-            return;
-        }
-
-        // 날짜 형식 변환
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate parsedDate = LocalDate.parse(date, formatter);
-
-        // DTO 객체 생성 및 데이터 설정
-        CalendarDTO dto = new CalendarDTO();
-        dto.setTitle(title);
-        dto.setDatetime(parsedDate);
-        dto.setMemo(memo);
-
-        // DAO 호출 및 결과 처리
+        CalendarDTO calendar = new CalendarDTO(0, userId, title, content, startDate, endDate, color, "ACTIVE");
         CalendarDAO dao = new CalendarDAO();
-        int result = dao.insertCalendar(dto);
+
+        int result = dao.insertCalendar(calendar);
 
         if (result > 0) {
-            response.sendRedirect("calendar.jsp");
+            response.sendRedirect("calendar.jsp"); // 성공 시 캘린더 페이지로 리다이렉트
         } else {
-            response.sendRedirect("error.jsp");
+            response.getWriter().write("<script>alert('일정 등록 실패!'); history.back();</script>");
         }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
+        String userId = request.getParameter("USER_ID");
+        CalendarDAO dao = new CalendarDAO();
+
+        List<CalendarDTO> calendarList = dao.getCalendars(userId);
+
+        request.setAttribute("calendarList", calendarList);
+        request.getRequestDispatcher("calendar.jsp").forward(request, response);
     }
 }

@@ -1,28 +1,39 @@
 package com.Pebble.it.model;
 
+import java.util.List;
+import javax.servlet.annotation.WebServlet;
 import org.apache.ibatis.session.SqlSession;
+import com.Pebble.it.db.SqlSessionManager;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.Pebble.it.db.SqlSessionManager;
+import com.Pebble.it.model.CalendarDAO;
 
 public class CalendarDAO {
+	
+	// DB 연결
+	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
+	private SqlSession sqlSession;
 
-	// DB연결
-	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
+    // 일정 등록
+    public int insertCalendar(CalendarDTO calendar) {
+        int result = 0;
+        try {
+            result = sqlSession.insert("com.Pebble.it.mapper.CalendarMapper.insertCalendar", calendar);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+        return result;
+    }
 
-	public int insertCalendar(CalendarDTO dto) {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		int cnt = sqlSession.insert("insert", dto);
-
-		if (cnt > 0) {
-			System.out.println("정보 입력 성공");
-		} else {
-			System.out.println("정보 입력 실패");
-		}
-
-		sqlSession.close();
-
-		return cnt;
-	}
+    // 일정 조회
+    public List<CalendarDTO> getCalendars(String userId) {
+        List<CalendarDTO> list = null;
+        try {
+            list = sqlSession.selectList("com.Pebble.it.mapper.CalendarMapper.getCalendars", userId);
+        } finally {
+            sqlSession.close();
+        }
+        return list;
+    }
 }
