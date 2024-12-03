@@ -42,7 +42,21 @@
 					});
 					</script>
 	</div>
+	<%
+	// todo_list.jsp 페이지가 실행되자 마자
+	// todoDAO 클래스를 통하여 showTodo()호출!
 	
+	// 로그인한 사용자의 내용 띄우기
+	// 0. session에서 로그인 사용자의 id 값 가져오기
+	todoDTO result = (todoDTO) session.getAttribute("result");
+	ArrayList<todoDTO> list = null;
+	if(result != null){
+		System.out.println("로그인한 사용자 정보:"+result.getUserId());
+		// 1. todoDAO 객체 생성
+		todoDAO dao = new todoDAO();
+		list = dao.showTodo(result.getUserId());
+	}
+	%>
 	<!-- 메인 콘텐츠 영역 -->
 	<div class="main-content">
 		<!-- 상단 툴바 -->
@@ -56,39 +70,22 @@
 					<div class="left-content">
 						<!-- 할일 목록-->
 			<table width="100%" class="todo_content">
-    <!-- 할일 목록 반복 출력 -->
-    <% 
-    todoDTO result = (todoDTO)session.getAttribute("result");
-    ArrayList<todoDTO> list = new ArrayList<>(); // null 초기화 방지
-    if (result != null) {
-        todoDAO dao = new todoDAO();
-        list = dao.showTodo(result.getUserId());
-    }
-    %>
-    
-    <% if (list != null && !list.isEmpty()) { %>
-        <% for (int i = 0; i < list.size(); i++) { %>
-        <tr>
-            <td class="tr_line">
-                <label>
-                    <input type="checkbox">
-                    <span><%= list.get(i).getTodoTitle() %></span>
-                </label>
-            </td>
-            <td width="40px" class="tr_line">
-                <img src="resources/img/todo_edit_img.png" alt="수정" id="icon_resize" class="btn">
-            </td>
-            <td width="40px" class="tr_line">
-                <img src="resources/img/todo_delete_img.png" alt="삭제" id="icon_resize" class="btn">
-            </td>
-        </tr>
-        <% } %>
-    <% } else { %>
-        <tr>
-            <td colspan="3" class="tr_line">등록된 할일이 없습니다.</td>
-        </tr>
-    <% } %>
-</table>
+				<%
+				if (result != null){
+					for (int i =0; i< list.size();i++){
+				
+				%>
+				<tr>
+					<td class="tr_line"><label><input type="checkbox"><span><%= list.get(i).getTodoTitle() %></span></label></td>
+					<td width="40px" class="tr_line"><img src="resources/img/todo_edit_img.png"
+						alt="수정" id="icon_resize" class="btn"></td>
+                    <td width="40px" class="tr_line"><img src="resources/img/todo_delete_img.png"
+                            alt="삭제" id="icon_resize" class="btn"></td>
+                </tr>
+                <%}
+				}
+				%>
+			</table>
 			<!-- 할일 목록 하단 버튼 영역-->
 			<div class="pagination">
 				<!-- 왼쪽 하단: 페이지 정보 -->
@@ -122,14 +119,13 @@
 					</div>
 				</div>
 
-		</div>  
+		</div>
 	</div>
     
     <!-- 할일 등록 모달창-->
 			<div id="modalContainer" class="modal">
 				<!-- 할일 등록 모달 내용 -->
 				<div id="todo_post_modal" class="modal-content">
-				<form action="todo" method="post">
 					<table class="modal_table">
 						<tr class="tr_line">
 							<td>할일 등록
@@ -138,18 +134,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" id="todo_content" name="todoTitle" placeholder="할일 내용"></td>
-						</tr>						
+							<td><input type="text" id="todo_content" placeholder="할일 내용" name="todoTitle"></td>
+						</tr>
 						<tr>
 							<td>
 								<div class="button-container">
 									<button id="cancel-button" class="close">취소</button>
-									<button id="submit-button" class="submit-button">등록</button>
+									<button id="submit-button" class="submit-button" type="submit">등록</button>
 								</div>
 							</td>
 						</tr>
 					</table>
-				</form>
 				</div>
 				<!-- 할일 등록 모달 내용 끝 -->
 			</div>
