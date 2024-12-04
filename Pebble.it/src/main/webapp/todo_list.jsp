@@ -31,12 +31,12 @@
 			$(document).ready(
 					function() {
 						$(".sidebar").load(
-								"Sidebar.html",
+								"Sidebar.jsp",
 								function(response, status, xhr) {
 									if (status == "error") {
 										// 만약 Sidebar.html이 로드되지 않으면 Sidebar.html으로 대체 시도
 										$(".sidebar").load(
-												"/Pebble.it/Sidebar.html");
+												"/Pebble.it/Sidebar.jsp");
 									}
 								});
 					});
@@ -62,7 +62,7 @@
 		<!-- 상단 툴바 -->
 		<div class="calendar-toolbar">
 			<!-- 할일 등록 버튼 -->
-			<button id="scheduleBtn" class="btn">+ 할일 등록</button>
+			<button id="registerTodoBtn" class="todo_btn">+ 할일 등록</button>
 		</div>
 
 				<div class="content-wrapper">
@@ -77,10 +77,12 @@
 				%>
 				<tr>
 					<td class="tr_line"><label><input type="checkbox"><span><%= list.get(i).getTodoTitle() %></span></label></td>
-					<td width="40px" class="tr_line"><img src="resources/img/todo_edit_img.png"
-						alt="수정" id="icon_resize" class="btn"></td>
-                    <td width="40px" class="tr_line"><img src="resources/img/todo_delete_img.png"
-                            alt="삭제" id="icon_resize" class="btn"></td>
+					<td width="40px" class="tr_line">
+                            <img src="resources/img/todo_edit_img.png" alt="수정" id="editBtn_<%= i %>" class="todo_btn">
+                        </td>
+                        <td width="40px" class="tr_line">
+                            <img src="resources/img/todo_delete_img.png" alt="삭제" id="deleteBtn_<%= i %>" class="todo_btn">
+                        </td>
                 </tr>
                 <%}
 				}
@@ -117,100 +119,133 @@
 						</div>
 						</div>
 					</div>
-				</div>
 
-		</div>
-	</div>
     
-    <!-- 할일 등록 모달창-->
-			<div id="modalContainer" class="modal">
-				<!-- 할일 등록 모달 내용 -->
-				<div id="todo_post_modal" class="modal-content">
-					<table class="modal_table">
-						<tr class="tr_line">
-							<td>할일 등록
-								<!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
-								<!-- <button id="modalCloseButton" class="close">X</button> -->
-							</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="todo_content" placeholder="할일 내용" name="todoTitle"></td>
-						</tr>
-						<tr>
-							<td>
-								<div class="button-container">
-									<button id="cancel-button" class="close">취소</button>
-									<button id="submit-button" class="submit-button" type="submit">등록</button>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<!-- 할일 등록 모달 내용 끝 -->
-			</div>
-            <!-- 할일 등록 모달창 끝-->
-
-    <!-- 할일 수정 모달창 -->
-    <div class="modal">
- 
-      <!-- 할일 수정 모달 내용 -->
-      <div id="todo_post_modal" class="modal-content">
-		<table class="modal_table">
-			<tr class="tr_line">
-				<td>할일 수정
-					<!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
-					<!-- <button id="modalCloseButton" class="close">X</button> -->
-				</td>
-			</tr>
-			<tr>
-				<td><input type="text" id="todo_content" value="들어가 있는 할일 내용"></td>
-			</tr>
-			<tr>
-				<td>
-					<div class="button-container">
-						<button id="cancel-button" class="close">취소</button>
-						<button id="edit-button" class="submit-button">수정</button>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-      <!-- 할일 수정 모달 내용 끌 -->
+     <!-- 할일 등록 모달창 (ID와 클래스 변경)-->
+    <div id="todoRegisterModal" class="modal">
+        <div class="modal-content">
+            <table class="modal_table">
+                <tr class="tr_line">
+                    <td>할일 등록</td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="registerTodoContent" placeholder="할일 내용" name="todoTitle"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="button-container">
+                            <button id="cancelRegisterTodo" class="todo_btn close">취소</button>
+                            <button id="submitRegisterTodo" class="todo_btn submit-button" type="submit">등록</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <!-- 할일 수정 모달창 끝 -->
 
-        <!-- 할일 삭제 모달창 -->
-        <div class="modal">
- 
-            <!-- 할일 삭제 모달 내용 -->
-            <div id="todo_delete_modal" class="modal-content">
-				<table class="modal_table">
-					<tr class="tr_line">
-						<td>할일 삭제
-							<!-- 모달 내에서 취소 버튼이 1개밖에 동작하지 않아 일단 주석처리 -->
-							<!-- <button id="modalCloseButton" class="close">X</button> -->
-						</td>
-					</tr>
-					<tr>
-						<td id="delete_msg">할일을 삭제하시겠습니까?</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="button-container">
-								<button id="cancel-button" class="close">취소</button>
-								<button id="delete-button" class="submit-button">삭제</button>
-							</div>
-						</td>
-					</tr>
-				</table>
-            </div>
-            <!-- 할일 삭제 모달 내용 끌 -->
-          </div>
-          <!-- 할일 삭제 모달창 끝 -->
+    <!-- 할일 수정 모달창 (ID와 클래스 변경)-->
+    <div id="todoEditModal" class="modal">
+        <div class="modal-content">
+            <table class="modal_table">
+                <tr class="tr_line">
+                    <td>할일 수정</td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="editTodoContent" value="들어가 있는 할일 내용"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="button-container">
+                            <button id="cancelEditTodo" class="todo_btn close">취소</button>
+                            <button id="submitEditTodo" class="todo_btn submit-button">수정</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-	<!-- JavaScript 파일 연결 -->
-	<script src="resources/js/to_do_list.js"></script>
-	<script src="resources/js/modal.js"></script>
-	<script src="resources/js/todo_check.js"></script>
+    <!-- 할일 삭제 모달창 (ID와 클래스 변경)-->
+    <div id="todoDeleteModal" class="modal">
+        <div class="modal-content">
+            <table class="modal_table">
+                <tr class="tr_line">
+                    <td>할일 삭제</td>
+                </tr>
+                <tr>
+                    <td id="deleteMsg">할일을 삭제하시겠습니까?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="button-container">
+                            <button id="cancelDeleteTodo" class="todo_btn close">취소</button>
+                            <button id="submitDeleteTodo" class="todo_btn submit-button">삭제</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="resources/js/to_do_list.js"></script>
+    <script src="resources/js/todo_check.js"></script>
+
+    <script>
+        // 할일 등록 모달 열기
+        $("#registerTodoBtn").click(function() {
+            $("#todoRegisterModal").show();
+        });
+
+        // 할일 등록 모달 취소
+        $("#cancelRegisterTodo").click(function() {
+            $("#todoRegisterModal").hide();
+        });
+
+        // 할일 등록
+        $("#submitRegisterTodo").click(function() {
+            var todoContent = $("#registerTodoContent").val();
+            // 서버로 데이터 전송
+            // 등록 후 모달 닫기
+            $("#todoRegisterModal").hide();
+        });
+
+        // 할일 수정 모달 열기
+        $("img[id^='editBtn_']").click(function() {
+            var index = $(this).attr("id").split("_")[1];  // index 추출
+            var todoContent = $("tr").eq(index).find("span").text(); // 해당 내용 가져오기
+            $("#editTodoContent").val(todoContent);
+            $("#todoEditModal").show();
+        });
+
+        // 할일 수정 취소
+        $("#cancelEditTodo").click(function() {
+            $("#todoEditModal").hide();
+        });
+
+        // 할일 수정
+        $("#submitEditTodo").click(function() {
+            var editedContent = $("#editTodoContent").val();
+            // 수정된 내용 서버로 전송
+            $("#todoEditModal").hide();
+        });
+
+        // 할일 삭제 모달 열기
+        $("img[id^='deleteBtn_']").click(function() {
+            var index = $(this).attr("id").split("_")[1]; // index 추출
+            $("#todoDeleteModal").show();
+        });
+
+        // 할일 삭제 취소
+        $("#cancelDeleteTodo").click(function() {
+            $("#todoDeleteModal").hide();
+        });
+
+        // 할일 삭제
+        $("#submitDeleteTodo").click(function() {
+            // 해당 할일 삭제 처리
+            $("#todoDeleteModal").hide();
+        });
+    </script>
 </body>
 </html>
