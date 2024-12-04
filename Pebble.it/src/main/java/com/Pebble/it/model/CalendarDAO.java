@@ -1,39 +1,40 @@
 package com.Pebble.it.model;
 
-import java.util.List;
-import javax.servlet.annotation.WebServlet;
 import org.apache.ibatis.session.SqlSession;
-import com.Pebble.it.db.SqlSessionManager;
-import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.Pebble.it.model.CalendarDAO;
+import java.util.List;
 
 public class CalendarDAO {
-	
-	// DB 연결
-	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
-	private SqlSession sqlSession;
+    private SqlSession sqlSession;
 
-    // 일정 등록
-    public int insertCalendar(CalendarDTO calendar) {
-        int result = 0;
-        try {
-            result = sqlSession.insert("com.Pebble.it.mapper.CalendarMapper.insertCalendar", calendar);
-            sqlSession.commit();
-        } finally {
-            sqlSession.close();
-        }
-        return result;
+    public CalendarDAO(SqlSession sqlSession) {
+        this.sqlSession = sqlSession;
     }
 
-    // 일정 조회
-    public List<CalendarDTO> getCalendars(String userId) {
-        List<CalendarDTO> list = null;
-        try {
-            list = sqlSession.selectList("com.Pebble.it.mapper.CalendarMapper.getCalendars", userId);
-        } finally {
-            sqlSession.close();
-        }
-        return list;
+    public List<CalendarDTO> getAllEvents() {
+        return sqlSession.selectList("calendarMapper.getAllEvents");
     }
+
+    public CalendarDTO getEventById(int cal_idx) {
+        return sqlSession.selectOne("calendarMapper.getEventById", cal_idx);
+    }
+
+    public void insertEvent(CalendarDTO event) {
+        sqlSession.insert("calendarMapper.insertEvent", event);
+    }
+
+    public void updateEvent(CalendarDTO event) {
+        sqlSession.update("calendarMapper.updateEvent", event);
+    }
+
+    public void deleteEvent(int cal_idx) {
+        sqlSession.delete("calendarMapper.deleteEvent", cal_idx);
+    }
+    
+    // 특정 회원 일정 가져오기
+    public List<CalendarDTO> getEventsByUserId(String userId) {
+        return sqlSession.selectList("calendarMapper.getEventsByUserId", userId);
+    }
+    
+    
 }

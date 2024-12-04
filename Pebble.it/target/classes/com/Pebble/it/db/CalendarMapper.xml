@@ -1,30 +1,56 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.Pebble.it.db.CalendarMapper">
-	<resultMap id="CalenderMap" type="com.Pebble.it.model.CalendarDTO">
-    <id property="CAL_IDX" column="CAL_IDX" />
-    <result property="USER_ID" column="USER_ID" />
-    <result property="CAL_TITLE" column="CAL_TITLE" />
-    <result property="CAL_CONTENT" column="CAL_CONTENT" />
-    <result property="CAL_ST_DT" column="CAL_ST_DT" />
-    <result property="CAL_ED_DT" column="CAL_ED_DT" />
-    <result property="CAL_COLOR" column="CAL_COLOR" />
-    <result property="CAL_STATUS" column="CAL_STATUS" />
-  </resultMap>
-	
-	<!-- 일정 등록 -->
-    <insert id="insertCalendar" parameterType="com.Pebble.it.model.CalendarDTO">
-        INSERT INTO TB_CALENDAR (
-            USER_ID, CAL_TITLE, CAL_CONTENT, CAL_ST_DT, CAL_ED_DT, CAL_COLOR, CAL_STATUS
-        ) VALUES (
-            #{USER_ID}, #{CAL_TITLE}, #{CAL_CONTENT}, #{CAL_ST_DT}, #{CAL_ED_DT}, #{CAL_COLOR}, #{CAL_STATUS}
-        )
+<mapper namespace="calendarMapper">
+
+<resultMap id="CalendarResultMap" type="com.Pebble.it.model.CalendarDTO">
+    <id property="cal_idx" column="cal_idx"/>
+    <result property="cal_title" column="cal_title"/>
+    <result property="cal_content" column="cal_content"/>
+    <result property="cal_st_dt" column="cal_st_dt"/>
+    <result property="cal_ed_dt" column="cal_ed_dt"/>
+    <result property="cal_color" column="cal_color"/>
+    <result property="cal_status" column="cal_status"/>
+</resultMap>
+
+    <select id="getAllEvents" resultType="com.Pebble.it.model.CalendarDTO">
+        SELECT cal_idx AS cal_idx, cal_title, cal_content, TO_CHAR(cal_st_dt, 'YYYY-MM-DD') AS cal_st_dt,
+               TO_CHAR(cal_ed_dt, 'YYYY-MM-DD') AS cal_ed_dt, cal_color, cal_status
+        FROM tb_calendar
+    </select>
+
+    <insert id="insertEvent">
+        INSERT INTO tb_calendar (user_id, cal_title, cal_content, cal_st_dt, cal_ed_dt, cal_color, cal_status)
+        VALUES ('user1', #{cal_title}, #{cal_content}, TO_DATE(#{cal_st_dt}, 'YYYY-MM-DD'),
+                TO_DATE(#{cal_ed_dt}, 'YYYY-MM-DD'), #{cal_color}, 'active')
     </insert>
 
-    <!-- 일정 조회 -->
-    <select id="getCalendars" resultType="com.Pebble.it.model.CalendarDTO">
-        SELECT * FROM TB_CALENDAR WHERE USER_ID = #{USER_ID}
-    </select>
-	
+    <update id="updateEvent">
+        UPDATE tb_calendar
+        SET cal_title = #{cal_title}, cal_content = #{cal_content}, cal_st_dt = TO_DATE(#{cal_st_dt}, 'YYYY-MM-DD'),
+            cal_ed_dt = TO_DATE(#{cal_ed_dt}, 'YYYY-MM-DD'), cal_color = #{cal_color}
+        WHERE cal_idx = #{cal_idx}
+    </update>
+
+    <delete id="deleteEvent">
+        DELETE FROM tb_calendar WHERE cal_idx = #{cal_idx}
+    </delete>
+    
+    <select id="getEventsByUserId" parameterType="String" resultType="com.Pebble.it.model.CalendarDTO">
+    SELECT cal_idx, cal_title, cal_content, TO_CHAR(cal_st_dt, 'YYYY-MM-DD') AS cal_st_dt,
+           TO_CHAR(cal_ed_dt, 'YYYY-MM-DD') AS cal_ed_dt, cal_color, cal_status
+    FROM tb_calendar
+    WHERE user_id = #{userId}
+</select>
+
+<select id="getEventById" parameterType="int" resultType="com.Pebble.it.model.CalendarDTO">
+    SELECT cal_idx, cal_title, cal_content, 
+           TO_CHAR(cal_st_dt, 'YYYY-MM-DD') AS cal_st_dt,
+           TO_CHAR(cal_ed_dt, 'YYYY-MM-DD') AS cal_ed_dt, 
+           cal_color, cal_status
+    FROM tb_calendar
+    WHERE cal_idx = #{cal_idx}
+</select>
 </mapper>
+
+
+
