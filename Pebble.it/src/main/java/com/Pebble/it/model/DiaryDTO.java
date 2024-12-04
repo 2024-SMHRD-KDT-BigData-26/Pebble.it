@@ -1,70 +1,21 @@
 package com.Pebble.it.model;
 
-import java.sql.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+// lombok 연결
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DiaryDTO {
-    private int diaryIdx;
-    private String userId;
-    private String diaryCategory;
-    private String diaryTitle;
-    private String diaryContent;
-    private Date diaryDt;
-    private String diaryFile;
-
-    // Getters and Setters
-    public int getDiaryIdx() {
-        return diaryIdx;
-    }
-
-    public void setDiaryIdx(int diaryIdx) {
-        this.diaryIdx = diaryIdx;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getDiaryCategory() {
-        return diaryCategory;
-    }
-
-    public void setDiaryCategory(String diaryCategory) {
-        this.diaryCategory = diaryCategory;
-    }
-
-    public String getDiaryTitle() {
-        return diaryTitle;
-    }
-
-    public void setDiaryTitle(String diaryTitle) {
-        this.diaryTitle = diaryTitle;
-    }
-
-    public String getDiaryContent() {
-        return diaryContent;
-    }
-
-    public void setDiaryContent(String diaryContent) {
-        this.diaryContent = diaryContent;
-    }
-
-    public Date getDiaryDt() {
-        return diaryDt;
-    }
-
-    public void setDiaryDt(Date diaryDt) {
-        this.diaryDt = diaryDt;
-    }
-
-    public String getDiaryFile() {
-        return diaryFile;
-    }
-
-    public void setDiaryFile(String diaryFile) {
-        this.diaryFile = diaryFile;
-    }
+	
+	private int idx;      	 // 기록 인덱스
+	private String user_id;         // 회원 아이디
+	private String diary_category;	// 기록 카테고리
+	private String diary_title;		// 기록 제목
+	private String diary_content;	// 기록 내용
+	private String diary_dt;		// 기록 날짜
+	private String diary_file;		// 기록 첨부파일
+	
 }

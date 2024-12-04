@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Pebble.it.db.DiaryMapper">
-	<!-- 일기 저장 -->
-    <insert id="insertDiary" parameterType="com.Pebble.it.model.DiaryDTO">
-        INSERT INTO tb_diary (
-            diary_idx,
-            user_id,
-            diary_category,
-            diary_title,
-            diary_content,
-            diary_dt,
-            diary_file
-        ) VALUES (
-            SEQ_DIARY.NEXTVAL, -- 시퀀스를 사용하는 경우
-            #{userId},
-            #{diaryCategory},
-            #{diaryTitle},
-            #{diaryContent},
-            SYSDATE,
-            #{diaryFile}
-        )  
-    </insert>
-    
-    <select id="selectAllDiary" resultType="com.Pebble.it.model.DiaryDTO">
-    SELECT diary_idx, user_id, diary_category, diary_title, diary_content, diary_dt, diary_file
-    FROM tb_diary
-    ORDER BY diary_dt DESC
-</select>
+
+
+	<!-- 다이어리 목록 가져오기 -->
+	<select id="getDiaryList"
+		resultType="com.Pebble.it.model.DiaryDTO">
+		SELECT *
+		FROM DIARY
+		ORDER BY DIARY_IDX DESC
+	</select>
+
+	<!-- 특정 다이어리 가져오기 -->
+	<select id="getDiary" parameterType="int"
+		resultType="com.Pebble.it.model.DiaryDTO">
+		SELECT *
+		FROM DIARY
+		WHERE DIARY_IDX = #{diaryIdx}
+	</select>
+
+	<!-- 다이어리 작성 -->
+	<insert id="WriteDiary"
+		parameterType="com.Pebble.it.model.DiaryDTO">
+		INSERT INTO DIARY (
+		DIARY_IDX, USER_ID, DIARY_CATEGORY, DIARY_TITLE,
+		DIARY_CONTENT, DIARY_DT, DIARY_FILE
+		)
+		VALUES (
+		DIARY_SEQ.NEXTVAL, #{user_id}, #{diary_category},
+		#{diary_title}, #{diary_content}, SYSDATE, #{diary_file}
+		)
+	</insert>
+
+
+
 
 </mapper>

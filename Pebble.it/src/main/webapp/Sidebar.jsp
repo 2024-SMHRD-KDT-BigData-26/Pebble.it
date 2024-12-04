@@ -60,7 +60,7 @@
 					<img src="resources/img/calender_menu_img.png">&nbsp;&nbsp;일정
 				</div></a> <a href="todo_list.html"><div id="menu_name">
 					<img src="resources/img/todo_menu_img.png">&nbsp;&nbsp;할일
-				</div></a> <a href="diary_list.html"><div id="menu_name">
+				</div></a> <a href="diary_list.jsp"><div id="menu_name">
 					<img src="resources/img/diary_menu_img.png">&nbsp;&nbsp;기록
 				</div></a> <a href="rank_euna.html"><div id="menu_name">
 					<img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지
