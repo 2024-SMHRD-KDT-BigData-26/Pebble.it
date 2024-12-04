@@ -7,48 +7,57 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Pebble.it.model.DiaryDAO;
 import com.Pebble.it.model.DiaryDTO;
 
 @WebServlet("/diary")
 public class diaryService extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 한글 인코딩 처리
-        request.setCharacterEncoding("UTF-8");
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        // 파라미터 수집
-        String userId = "defaultUser"; // 로그인 없이 작성 가능하도록 기본값 설정
-        String title = request.getParameter("title");
-        String content = request.getParameter("note");
+		// 인코딩
+		request.setCharacterEncoding("UTF-8");
 
-        // 입력값 검증
-        if (title == null || title.isEmpty() || content == null || content.isEmpty()) {
-            response.sendRedirect("diary_list.jsp?error=empty_fields");
-            return;
-        }
+		// 파라미터 값 가져오기
+		String diaryTitle = request.getParameter("diaryTitle"); // 입력된 제목
+		String diaryContent = request.getParameter("diaryContent"); // 입력된 내용
 
-        // DTO 생성 및 데이터 설정
-        DiaryDTO dto = new DiaryDTO();
-        dto.setUserId(userId);
-        dto.setDiaryCategory("Default"); // 카테고리는 기본값으로 설정
-        dto.setDiaryTitle(title);
-        dto.setDiaryContent(content);
-        dto.setDiaryFile(""); // 파일 첨부 기능이 없으므로 기본값 설정
+		// 세션에서 사용자 ID 가져오기
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
 
-        // DAO 호출
-        DiaryDAO dao = new DiaryDAO();
-        int result = dao.insertDiary(dto);
+		// 객체 생성 데이터 세팅
+		DiaryDTO dto = new DiaryDTO();
+		dto.setUser_id(userId);
+		dto.setDiary_title(diaryTitle);
+		dto.setDiary_content(diaryContent);
 
-        // 결과 처리
-        if (result > 0) {
-            response.sendRedirect("diary_list.jsp");
-        } else {
-            response.sendRedirect("error.jsp");
-        }
-    }
+		// DAO 호출
+		DiaryDAO dao = new DiaryDAO();
+		int result = dao.writeDiary(dto);
+
+		// 결과에 따른 처리
+		if (result > 0) {
+			// AJAX 요청일 경우 성공 응답 전송
+			if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+				response.setStatus(HttpServletResponse.SC_OK);
+				response.getWriter().write("success");
+			} else {
+				// 일반 요청일 경우 다이어리 목록 페이지로 이동
+				response.sendRedirect("diary_list.jsp");
+			}
+		} else {
+			// 실패 시
+			if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				response.getWriter().write("failure");
+			} else {
+				response.getWriter().write("<script>alert('등록 실패'); history.back();</script>");
+			}
+		}
+	}
 }
