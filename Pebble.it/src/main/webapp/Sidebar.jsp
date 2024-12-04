@@ -54,15 +54,15 @@
 			</table>
 		</div>
 		<nav class="sidebar-menu">
-			<a href="home_content.html"><div id="menu_name" class="menu01">
+			<a href="home_content.jsp"><div id="menu_name" class="menu01">
 					<img src="resources/img/home_menu_img.png">&nbsp;&nbsp;홈
-				</div></a> <a href="calender.html"><div id="menu_name">
+				</div></a> <a href="calender.jsp"><div id="menu_name">
 					<img src="resources/img/calender_menu_img.png">&nbsp;&nbsp;일정
 				</div></a> <a href="todo_list.jsp"><div id="menu_name">
 					<img src="resources/img/todo_menu_img.png">&nbsp;&nbsp;할일
 				</div></a> <a href="diary_list.jsp"><div id="menu_name">
 					<img src="resources/img/diary_menu_img.png">&nbsp;&nbsp;기록
-				</div></a> <a href="rank_euna.html"><div id="menu_name">
+				</div></a> <a href="rank_euna.jsp"><div id="menu_name">
 					<img src="resources/img/challenge_menu_img.png">&nbsp;&nbsp;챌린지
 				</div></a> 
 				<div id="logout_menu">
